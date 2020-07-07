@@ -15,14 +15,15 @@ public class Main {
             Director director = new Director(htmlbuilder);
             director.construct();
             String filename = htmlbuilder.getResult();
-            System.out.println(filename + "が作成されました。");
+            System.out.println(filename + "");
         } else {
             usage();
             System.exit(0);
         }
     }
+
     public static void usage() {
-        System.out.println("Usage: java Main plain      プレーンテキストで文書作成");
-        System.out.println("Usage: java Main html       HTMLファイルで文書作成");
+        System.out.println("Usage: java Main plain      ");
+        System.out.println("Usage: java Main html       ");
     }
 }

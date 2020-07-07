@@ -1,24 +1,29 @@
 public class TextBuilder extends Builder {
-    private StringBuffer buffer = new StringBuffer();           // §≥§Œ•’•£°º•Î•…§À ∏ΩÒ§ÚπΩ√€§∑§∆§§§Ø
-    public void makeTitle(String title) {                       // •◊•Ï°º•Û•∆•≠•π•»§«§Œ•ø•§•»•Î
-        buffer.append("==============================\n");          // æ˛§Í¿˛
-        buffer.append("°ÿ" + title + "°Ÿ\n");                       // °ÿ°Ÿ§ƒ§≠§Œ•ø•§•»•Î
-        buffer.append("\n");                                        // ∂ıπ‘
+    private StringBuffer buffer = new StringBuffer();
+
+    public void makeTitle(String title) {
+        buffer.append("==============================\n");
+        buffer.append("„Äå" + title + "„Äç\n");
+        buffer.append("\n");
     }
-    public void makeString(String str) {                        // •◊•Ï°º•Û•∆•≠•π•»§«§Œ ∏ª˙ŒÛ
-        buffer.append('¢£' + str + "\n");                           // ¢£§ƒ§≠§Œ ∏ª˙ŒÛ
-        buffer.append("\n");                                        // ∂ıπ‘
+
+    public void makeString(String str) {
+        buffer.append('‚ñ†' + str + "\n");
+        buffer.append("\n");
     }
-    public void makeItems(String[] items) {                     // •◊•Ï°º•Û•∆•≠•π•»§«§Œ≤’æÚΩÒ§≠
+
+    public void makeItems(String[] items) {
         for (int i = 0; i < items.length; i++) {
-            buffer.append("°°°¶" + items[i] + "\n");                // °¶§ƒ§≠§Œπ‡Ã‹
+            buffer.append("„Éª" + items[i] + "\n");
         }
-        buffer.append("\n");                                        // ∂ıπ‘
+        buffer.append("\n");
     }
-    public void close() {                                       //  ∏ΩÒ§Œ¥∞¿Æ
-        buffer.append("==============================\n");          // æ˛§Í¿˛
+
+    public void close() {
+        buffer.append("==============================\n");
     }
-    public String getResult() {                                 // ¥∞¿Æ§∑§ø ∏ΩÒ
-        return buffer.toString();                                   // StringBuffer§ÚString§À —¥π
+
+    public String getResult() {
+        return buffer.toString();
     }
 }

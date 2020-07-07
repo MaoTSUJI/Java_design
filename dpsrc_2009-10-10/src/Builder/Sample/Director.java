@@ -1,21 +1,16 @@
 public class Director {
     private Builder builder;
-    public Director(Builder builder) {      // Builder¤Î¥µ¥Ö¥¯¥é¥¹¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤¬Í¿¤¨¤é¤ì¤ë¤Î¤Ç¡¢
-        this.builder = builder;             // builder¥Õ¥£¡¼¥ë¥É¤ËÊİ»ı¤·¤Æ¤ª¤¯¡£
+
+    public Director(Builder builder) {
+        this.builder = builder;
     }
-    public void construct() {             // Ê¸½ñ¹½ÃÛ
-        builder.makeTitle("Greeting");              // ¥¿¥¤¥È¥ë
-        builder.makeString("Ä«¤«¤éÃë¤Ë¤«¤±¤Æ");     // Ê¸»úÎó
-        builder.makeItems(new String[]{             // ²Õ¾ò½ñ¤­
-            "¤ª¤Ï¤è¤¦¤´¤¶¤¤¤Ş¤¹¡£",
-            "¤³¤ó¤Ë¤Á¤Ï¡£",
-        });
-        builder.makeString("Ìë¤Ë");                 // ÊÌ¤ÎÊ¸»úÎó
-        builder.makeItems(new String[]{             // ÊÌ¤Î²Õ¾ò½ñ¤­
-            "¤³¤ó¤Ğ¤ó¤Ï¡£",
-            "¤ª¤ä¤¹¤ß¤Ê¤µ¤¤¡£",
-            "¤µ¤è¤¦¤Ê¤é¡£",
-        });
-        builder.close();                 // Ê¸½ñ¤ò´°À®¤µ¤»¤ë
+
+    public void construct() {
+        builder.makeTitle("Greeting");
+        builder.makeString("æœæ˜¼");
+        builder.makeItems(new String[] { "ãŠã¯ã‚ˆã†", "ã“ã‚“ã«ã¡ã¯", });
+        builder.makeString("å¤œ");
+        builder.makeItems(new String[] { "ã“ã‚“ã°ã‚“ã¯", "ãŠã‚„ã™ã¿", "ã”ã‚†ã£ãã‚Š", });
+        builder.close();
     }
 }
