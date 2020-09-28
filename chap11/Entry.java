@@ -1,3 +1,5 @@
+package chap11;
+
 public abstract class Entry {
   public abstract String getName();
 
