@@ -1,9 +1,9 @@
 public class FullBorder extends Border {
-  private char borderChar;
+  // private char borderChar;
 
-  public FullBorder(Display display, char ch) {
+  public FullBorder(Display display) {
     super(display);
-    this.borderChar = ch;
+    // this.borderChar = ch;
   }
 
   public int getColumns() {
@@ -15,16 +15,17 @@ public class FullBorder extends Border {
   }
 
   public String getRowText(int row) {
-    if (row == 0 || row == getRows() + 1) {
-      return borderChar + makeLine(borderChar, row) + borderChar;
+    if (row == 0 || row == display.getRows() + 1) {
+      return "+" + makeLine('-', display.getColumns()) + "+";
+    } else {
+      return "|" + display.getRowText(row - 1) + "|"; // SideBorderの飾り付け
     }
-    return borderChar + display.getRowText(row) + borderChar; // SideBorderの飾り付け
   }
 
   private String makeLine(char ch, int count) {
     StringBuffer buf = new StringBuffer();
     for (int i = 0; i < count; i++) {
-      buf.append(buf);
+      buf.append(ch);
     }
     return buf.toString();
   }
