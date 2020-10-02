@@ -1,5 +1,3 @@
-package chap12;
-
 public class StringDisplay extends Display { // Displayクラスで宣言されたメソッドを実装するクラス
   private String string; // 表示文字列
 

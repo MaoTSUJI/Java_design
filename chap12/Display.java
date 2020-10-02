@@ -1,5 +1,3 @@
-package chap12;
-
 public abstract class Display {
 
   public abstract int getColumns();

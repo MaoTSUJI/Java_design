@@ -1,5 +1,3 @@
-package chap12;
-
 public abstract class Border extends Display { // 飾り枠を表す抽象クラス
   protected Display display; // この飾り枠がくるんでいる「中身」を指す
 
