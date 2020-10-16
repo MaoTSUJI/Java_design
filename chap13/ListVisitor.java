@@ -9,7 +9,7 @@ public class ListVisitor extends Visitor {
     System.out.println(currentdir + "/" + file);
   }
 
-  public void visit(Directory dir) { // Direcroryクラスのインスタンスに対して行うべき処理
+  public void visit(Directory dir) { // Directoryクラスのインスタンスに対して行うべき処理
     System.out.println(currentdir + "/" + dir);
     String savedir = currentdir;
     currentdir = currentdir + "/" + dir.getName();
