@@ -1,7 +1,7 @@
 package chap14;
 
 public abstract class Support {
-  private String name(); // トラブル解決者の名前
+  private String name; // トラブル解決者の名前
 
   private Support next; // たらい回しの先
 
@@ -14,7 +14,15 @@ public abstract class Support {
   };
 
   public final void support(Trouble trouble) {
-
+    for (Support obj = this; true; obj = obj.next) {
+      if (obj.resolve(trouble)) {
+        obj.done(trouble);
+        break;
+      } else {
+        obj.fail(trouble);
+        break;
+      }
+    }
   }
 
   public String toString() {
