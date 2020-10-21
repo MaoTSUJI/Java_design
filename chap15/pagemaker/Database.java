@@ -1,4 +1,4 @@
-package chap15.pagemaker;
+package pagemaker;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class Database {
     try {
       prop.load(new FileInputStream(filename));
     } catch (IOException e) {
-      System.out.println("Warning: " + filename + "is not found");
+      System.out.println("Warning: " + filename + " is not found");
     }
     return prop;
   }
