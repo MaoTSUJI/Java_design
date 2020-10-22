@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Database {
+class Database {
   private Database() { // newでインスタンス生成させないためにprivate宣言
   }
 

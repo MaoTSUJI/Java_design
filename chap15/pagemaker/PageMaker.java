@@ -1,7 +1,11 @@
 package pagemaker;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Properties;
+
+import javax.swing.text.html.HTMLWriter;
+
 import java.io.FileWriter;
 
 public class PageMaker {
@@ -23,6 +27,25 @@ public class PageMaker {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  public static void makeLinkPage(String filename) { // メアドのリンク集を作成する
+    try {
+      HtmlWriter writer = new HtmlWriter(new FileWriter(filename));
+      writer.title("Link Page");
+      Properties mailprop = Database.getProperties("maildata");
+      Enumeration en = mailprop.propertyNames();
+      while (en.hasMoreElements()) {
+        String mailaddr = (String) en.nextElement();
+        String username = mailprop.getProperty(mailaddr, "(unknown)");
+        writer.link(mailaddr, username);
+      }
+      writer.close();
+      System.out.println(filename + "iscreated.");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 
 }
