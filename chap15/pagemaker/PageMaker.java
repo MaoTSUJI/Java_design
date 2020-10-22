@@ -37,7 +37,7 @@ public class PageMaker {
       Enumeration en = mailprop.propertyNames();
       while (en.hasMoreElements()) {
         String mailaddr = (String) en.nextElement();
-        String username = mailprop.getProperty(mailaddr, "(unknown)");
+        String username = mailprop.getProperty(mailaddr);
         writer.link(mailaddr, username);
       }
       writer.close();
