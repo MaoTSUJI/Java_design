@@ -1,27 +1,32 @@
 public class PrinterProxy implements Printable {
-    private String name;            // Ì¾Á°
-    private Printer real;           // ¡ÖËÜ¿Í¡×
-    public PrinterProxy() {
+  private String name; // Ì¾ï¿½ï¿½
+  private Printer real; // ï¿½ï¿½ï¿½Ü¿Í¡ï¿½
+
+  public PrinterProxy() {}
+
+  public PrinterProxy(String name) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.name = name;
+  }
+
+  public synchronized void setPrinterName(String name) { // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (real != null) {
+      real.setPrinterName(name); // ï¿½ï¿½ï¿½Ü¿Í¡×¤Ë¤ï¿½ï¿½ï¿½ï¿½ê¤¹ï¿½ï¿½
     }
-    public PrinterProxy(String name) {      // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.name = name;
+    this.name = name;
+  }
+
+  public String getPrinterName() { // Ì¾ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
+    return name;
+  }
+
+  public void print(String string) { // É½ï¿½ï¿½
+    realize();
+    real.print(string);
+  }
+
+  private synchronized void realize() { // ï¿½ï¿½ï¿½Ü¿Í¡×¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (real == null) {
+      real = new Printer(name);
     }
-    public synchronized void setPrinterName(String name) {  // Ì¾Á°¤ÎÀßÄê
-        if (real != null) {
-            real.setPrinterName(name);  // ¡ÖËÜ¿Í¡×¤Ë¤âÀßÄê¤¹¤ë
-        }
-        this.name = name;
-    }
-    public String getPrinterName() {    // Ì¾Á°¤Î¼èÆÀ
-        return name;
-    }
-    public void print(String string) {  // É½¼¨
-        realize();
-        real.print(string);
-    }
-    private synchronized void realize() {   // ¡ÖËÜ¿Í¡×¤òÀ¸À®
-        if (real == null) {
-            real = new Printer(name);
-        }
-    }
+  }
 }

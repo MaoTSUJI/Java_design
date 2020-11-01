@@ -1,25 +1,29 @@
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FileFindVisitor extends Visitor {
-    private String filetype;
-    private ArrayList found = new ArrayList();
-    public FileFindVisitor(String filetype) {           // ".txt"¤Î¤è¤¦¤Ë³ÈÄ¥»Ò¤ò.ÉÕ¤­¤Ç»ØÄê
-        this.filetype = filetype;
+  private String filetype;
+  private ArrayList found = new ArrayList();
+
+  public FileFindVisitor(String filetype) { // ".txt"ï¿½Î¤è¤¦ï¿½Ë³ï¿½Ä¥ï¿½Ò¤ï¿½.ï¿½Õ¤ï¿½ï¿½Ç»ï¿½ï¿½ï¿½
+    this.filetype = filetype;
+  }
+
+  public Iterator getFoundFiles() { // ï¿½ï¿½ï¿½Ä¤ï¿½ï¿½Ã¤ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return found.iterator();
+  }
+
+  public void visit(File file) { // ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¬ï¿½ä¤·ï¿½ï¿½ï¿½È¤ï¿½ï¿½Ë¸Æ¤Ð¤ï¿½ï¿½
+    if (file.getName().endsWith(filetype)) {
+      found.add(file);
     }
-    public Iterator getFoundFiles() {                   // ¸«¤Ä¤«¤Ã¤¿¥Õ¥¡¥¤¥ë¤òÆÀ¤ë
-        return found.iterator();
+  }
+
+  public void visit(Directory directory) { // ï¿½Ç¥ï¿½ï¿½ì¥¯ï¿½È¥ï¿½ï¿½Ë¬ï¿½ä¤·ï¿½ï¿½ï¿½È¤ï¿½ï¿½Ë¸Æ¤Ð¤ï¿½ï¿½
+    Iterator it = directory.iterator();
+    while (it.hasNext()) {
+      Entry entry = (Entry) it.next();
+      entry.accept(this);
     }
-    public void visit(File file) {                  // ¥Õ¥¡¥¤¥ë¤òË¬Ìä¤·¤¿¤È¤­¤Ë¸Æ¤Ð¤ì¤ë
-        if (file.getName().endsWith(filetype)) {
-            found.add(file);
-        }
-    }
-    public void visit(Directory directory) {   // ¥Ç¥£¥ì¥¯¥È¥ê¤òË¬Ìä¤·¤¿¤È¤­¤Ë¸Æ¤Ð¤ì¤ë
-        Iterator it = directory.iterator();
-        while (it.hasNext()) {
-            Entry entry = (Entry)it.next();
-            entry.accept(this);
-        }
-    }
+  }
 }

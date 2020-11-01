@@ -1,21 +1,25 @@
-import java.awt.TextField;
 import java.awt.Color;
-import java.awt.event.TextListener;
+import java.awt.TextField;
 import java.awt.event.TextEvent;
+import java.awt.event.TextListener;
 
 public class ColleagueTextField extends TextField implements TextListener, Colleague {
-    private Mediator mediator;
-    public ColleagueTextField(String text, int columns) {   // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        super(text, columns);
-    }
-    public void setMediator(Mediator mediator) {            // Mediator¤òÊÝ»ý
-        this.mediator = mediator;
-    }
-    public void setColleagueEnabled(boolean enabled) {      // Mediator¤«¤éÍ­¸ú/Ìµ¸ú¤¬»Ø¼¨¤µ¤ì¤ë
-        setEnabled(enabled);
-        setBackground(enabled ? Color.white : Color.lightGray);
-    }
-    public void textValueChanged(TextEvent e) {             // Ê¸»úÎó¤¬ÊÑ²½¤·¤¿¤éMediator¤ËÄÌÃÎ
-        mediator.colleagueChanged();
-    }
+  private Mediator mediator;
+
+  public ColleagueTextField(String text, int columns) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    super(text, columns);
+  }
+
+  public void setMediator(Mediator mediator) { // Mediatorï¿½ï¿½ï¿½Ý»ï¿½
+    this.mediator = mediator;
+  }
+
+  public void setColleagueEnabled(boolean enabled) { // Mediatorï¿½ï¿½ï¿½ï¿½Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    setEnabled(enabled);
+    setBackground(enabled ? Color.white : Color.lightGray);
+  }
+
+  public void textValueChanged(TextEvent e) { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mediatorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    mediator.colleagueChanged();
+  }
 }

@@ -1,6 +1,9 @@
 public interface State {
-    public abstract void doClock(Context context, int hour);    // »þ¹ïÀßÄê
-    public abstract void doUse(Context context);                // ¶â¸Ë»ÈÍÑ
-    public abstract void doAlarm(Context context);              // Èó¾ï¥Ù¥ë
-    public abstract void doPhone(Context context);              // ÄÌ¾ïÄÌÏÃ
+  public abstract void doClock(Context context, int hour); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract void doUse(Context context); // ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
+
+  public abstract void doAlarm(Context context); // ï¿½ï¿½ï¿½Ù¥ï¿½
+
+  public abstract void doPhone(Context context); // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½
 }

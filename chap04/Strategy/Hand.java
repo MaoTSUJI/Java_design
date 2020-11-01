@@ -3,9 +3,13 @@ public class Hand { // じゃんけんの手を表すクラス
   private static final int HANDVALUE_CHOKI = 1;
   private static final int HANDVALUE_PAA = 2;
 
-  public static final Hand[] hand = { new Hand(HANDVALUE_GUU), new Hand(HANDVALUE_CHOKI), new Hand(HANDVALUE_PAA), };
+  public static final Hand[] hand = {
+    new Hand(HANDVALUE_GUU), new Hand(HANDVALUE_CHOKI), new Hand(HANDVALUE_PAA),
+  };
 
-  private static final String[] name = { "グー", "チョキ", "パー", };
+  private static final String[] name = {
+    "グー", "チョキ", "パー",
+  };
 
   private int handvalue;
 

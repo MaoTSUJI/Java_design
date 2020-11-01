@@ -1,32 +1,38 @@
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Directory extends Entry {
-    private String name;                    // ¥Ç¥£¥ì¥¯¥È¥ê¤ÎÌ¾Á°
-    private ArrayList dir = new ArrayList();      // ¥Ç¥£¥ì¥¯¥È¥ê¥¨¥ó¥È¥ê¤Î½¸¹ç
-    public Directory(String name) {         // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.name = name;
+  private String name; // ï¿½Ç¥ï¿½ï¿½ì¥¯ï¿½È¥ï¿½ï¿½Ì¾ï¿½ï¿½
+  private ArrayList dir = new ArrayList(); // ï¿½Ç¥ï¿½ï¿½ì¥¯ï¿½È¥ê¥¨ï¿½ï¿½È¥ï¿½Î½ï¿½ï¿½ï¿½
+
+  public Directory(String name) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.name = name;
+  }
+
+  public String getName() { // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return name;
+  }
+
+  public int getSize() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int size = 0;
+    Iterator it = dir.iterator();
+    while (it.hasNext()) {
+      Entry entry = (Entry) it.next();
+      size += entry.getSize();
     }
-    public String getName() {               // Ì¾Á°¤òÆÀ¤ë
-        return name;
-    }
-    public int getSize() {                  // ¥µ¥¤¥º¤òÆÀ¤ë
-        int size = 0;
-        Iterator it = dir.iterator();
-        while (it.hasNext()) {
-            Entry entry = (Entry)it.next();
-            size += entry.getSize();
-        }
-        return size;
-    }
-    public Entry add(Entry entry) {         // ¥¨¥ó¥È¥ê¤ÎÄÉ²Ã
-        dir.add(entry);
-        return this;
-    }
-    public Iterator iterator() {      // Iterator¤ÎÀ¸À®
-        return dir.iterator();
-    }
-    public void accept(Visitor v) {         // Ë¬Ìä¼Ô¤Î¼õ¤±Æþ¤ì
-        v.visit(this);
-    }
+    return size;
+  }
+
+  public Entry add(Entry entry) { // ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½É²ï¿½
+    dir.add(entry);
+    return this;
+  }
+
+  public Iterator iterator() { // Iteratorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return dir.iterator();
+  }
+
+  public void accept(Visitor v) { // Ë¬ï¿½ï¿½Ô¤Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    v.visit(this);
+  }
 }

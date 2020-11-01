@@ -1,12 +1,13 @@
 public class CountDisplay extends Display {
-    public CountDisplay(DisplayImpl impl) {
-        super(impl);
+  public CountDisplay(DisplayImpl impl) {
+    super(impl);
+  }
+
+  public void multiDisplay(int times) { // timesï¿½ó·«¤ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    open();
+    for (int i = 0; i < times; i++) {
+      print();
     }
-    public void multiDisplay(int times) {       // times²ó·«¤êÊÖ¤·¤ÆÉ½¼¨¤¹¤ë
-        open();
-        for (int i = 0; i < times; i++) {
-            print();
-        }
-        close();
-    }
+    close();
+  }
 }

@@ -1,14 +1,14 @@
 public class Main {
-    public static void main(String[] args) {
-        SafeFrame frame = new SafeFrame("State Sample");
-        while (true) {
-            for (int hour = 0; hour < 24; hour++) {
-                frame.setClock(hour);   // »þ¹ï¤ÎÀßÄê
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                }
-            }
+  public static void main(String[] args) {
+    SafeFrame frame = new SafeFrame("State Sample");
+    while (true) {
+      for (int hour = 0; hour < 24; hour++) {
+        frame.setClock(hour); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        try {
+          Thread.sleep(1000);
+        } catch (InterruptedException e) {
         }
+      }
     }
+  }
 }

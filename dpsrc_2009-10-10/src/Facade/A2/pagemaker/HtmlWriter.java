@@ -1,33 +1,39 @@
 package pagemaker;
 
-import java.io.Writer;
 import java.io.IOException;
+import java.io.Writer;
 
 public class HtmlWriter {
-    private Writer writer;
-    public HtmlWriter(Writer writer) {  // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.writer = writer;
-    }
-    public void title(String title) throws IOException {    // ¥¿¥¤¥È¥ë¤Î½ÐÎÏ
-        writer.write("<html>");
-        writer.write("<head>");
-        writer.write("<title>" + title + "</title>");
-        writer.write("</head>");
-        writer.write("<body>\n");
-        writer.write("<h1>" + title + "</h1>\n");
-    }
-    public void paragraph(String msg) throws IOException {  // ÃÊÍî¤Î½ÐÎÏ
-        writer.write("<p>" + msg + "</p>\n");
-    }
-    public void link(String href, String caption) throws IOException {  // ¥ê¥ó¥¯¤Î½ÐÎÏ
-        paragraph("<a href=\"" + href + "\">" + caption + "</a>");
-    }
-    public void mailto(String mailaddr, String username) throws IOException {   // ¥á¡¼¥ë¥¢¥É¥ì¥¹¤Î½ÐÎÏ
-        link("mailto:" + mailaddr, username);
-    }
-    public void close() throws IOException {    // ÊÄ¤¸¤ë
-        writer.write("</body>");
-        writer.write("</html>\n");
-        writer.close();
-    }
+  private Writer writer;
+
+  public HtmlWriter(Writer writer) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.writer = writer;
+  }
+
+  public void title(String title) throws IOException { // ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½Î½ï¿½ï¿½ï¿½
+    writer.write("<html>");
+    writer.write("<head>");
+    writer.write("<title>" + title + "</title>");
+    writer.write("</head>");
+    writer.write("<body>\n");
+    writer.write("<h1>" + title + "</h1>\n");
+  }
+
+  public void paragraph(String msg) throws IOException { // ï¿½ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½
+    writer.write("<p>" + msg + "</p>\n");
+  }
+
+  public void link(String href, String caption) throws IOException { // ï¿½ï¿½ó¥¯¤Î½ï¿½ï¿½ï¿½
+    paragraph("<a href=\"" + href + "\">" + caption + "</a>");
+  }
+
+  public void mailto(String mailaddr, String username) throws IOException { // ï¿½á¡¼ï¿½ë¥¢ï¿½É¥ì¥¹ï¿½Î½ï¿½ï¿½ï¿½
+    link("mailto:" + mailaddr, username);
+  }
+
+  public void close() throws IOException { // ï¿½Ä¤ï¿½ï¿½ï¿½
+    writer.write("</body>");
+    writer.write("</html>\n");
+    writer.close();
+  }
 }

@@ -15,5 +15,4 @@ public class RandomStrategy implements Strategy {
   public void study(boolean win) {
     won = win;
   };
-
 }

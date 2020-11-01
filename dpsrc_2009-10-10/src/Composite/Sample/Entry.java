@@ -1,14 +1,19 @@
 public abstract class Entry {
-    public abstract String getName();                               // Ì¾Á°¤òÆÀ¤ë
-    public abstract int getSize();                                  // ¥µ¥¤¥º¤òÆÀ¤ë
-    public Entry add(Entry entry) throws FileTreatmentException {   // ¥¨¥ó¥È¥ê¤òÄÉ²Ã¤¹¤ë
-        throw new FileTreatmentException();
-    }
-    public void printList() {                                       // °ìÍ÷¤òÉ½¼¨¤¹¤ë
-        printList("");
-    }
-    protected abstract void printList(String prefix);               // prefix¤òÁ°¤Ë¤Ä¤±¤Æ°ìÍ÷¤òÉ½¼¨¤¹¤ë
-    public String toString() {                                      // Ê¸»úÎóÉ½¸½
-        return getName() + " (" + getSize() + ")";
-    }
+  public abstract String getName(); // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract int getSize(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public Entry add(Entry entry) throws FileTreatmentException { // ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½É²Ã¤ï¿½ï¿½ï¿½
+    throw new FileTreatmentException();
+  }
+
+  public void printList() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    printList("");
+  }
+
+  protected abstract void printList(String prefix); // prefixï¿½ï¿½ï¿½ï¿½ï¿½Ë¤Ä¤ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return getName() + " (" + getSize() + ")";
+  }
 }

@@ -1,15 +1,17 @@
 import java.util.Random;
 
 public class RandomNumberGenerator extends NumberGenerator {
-    private Random random = new Random();   // Íð¿ôÀ¸À®µ¡
-    private int number;                     // ¸½ºß¤Î¿ô
-    public int getNumber() {                // ¿ô¤ò¼èÆÀ¤¹¤ë
-        return number;
+  private Random random = new Random(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private int number; // ï¿½ï¿½ï¿½ß¤Î¿ï¿½
+
+  public int getNumber() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return number;
+  }
+
+  public void execute() {
+    for (int i = 0; i < 20; i++) {
+      number = random.nextInt(50);
+      notifyObservers();
     }
-    public void execute() {
-        for (int i = 0; i < 20; i++) {
-            number = random.nextInt(50);
-            notifyObservers();
-        }
-    }
+  }
 }

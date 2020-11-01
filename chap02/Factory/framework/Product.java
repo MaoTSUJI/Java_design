@@ -1,7 +1,7 @@
 package framework;
 
 public abstract class Product {
-    public abstract void use();
+  public abstract void use();
 }
 // Javaではabstractなコンストラクタを作ることができない
 // Javaではコンストラクタは継承されないので、abstractなコンストラクタには意味がない

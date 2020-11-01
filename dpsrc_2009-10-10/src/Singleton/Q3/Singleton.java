@@ -1,12 +1,14 @@
 public class Singleton {
-    private static Singleton singleton = null;
-    private Singleton() {
-        System.out.println("¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Þ¤·¤¿¡£");
+  private static Singleton singleton = null;
+
+  private Singleton() {
+    System.out.println("ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+  }
+
+  public static Singleton getInstance() {
+    if (singleton == null) {
+      singleton = new Singleton();
     }
-    public static Singleton getInstance() {
-        if (singleton == null) {
-            singleton = new Singleton();
-        }
-        return singleton;
-    }
+    return singleton;
+  }
 }

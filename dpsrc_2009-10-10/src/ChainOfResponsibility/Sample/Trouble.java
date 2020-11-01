@@ -1,12 +1,15 @@
 public class Trouble {
-    private int number;             // ¥È¥é¥Ö¥ëÈÖ¹æ
-    public Trouble(int number) {    // ¥È¥é¥Ö¥ë¤ÎÀ¸À®
-        this.number = number;
-    }
-    public int getNumber() {        // ¥È¥é¥Ö¥ëÈÖ¹æ¤òÆÀ¤ë
-        return number;
-    }
-    public String toString() {      // ¥È¥é¥Ö¥ë¤ÎÊ¸»úÎóÉ½¸½
-        return "[Trouble " + number + "]";
-    }
+  private int number; // ï¿½È¥ï¿½Ö¥ï¿½ï¿½Ö¹ï¿½
+
+  public Trouble(int number) { // ï¿½È¥ï¿½Ö¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    this.number = number;
+  }
+
+  public int getNumber() { // ï¿½È¥ï¿½Ö¥ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return number;
+  }
+
+  public String toString() { // ï¿½È¥ï¿½Ö¥ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[Trouble " + number + "]";
+  }
 }

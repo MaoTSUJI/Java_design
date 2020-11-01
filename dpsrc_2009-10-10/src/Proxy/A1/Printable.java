@@ -1,5 +1,7 @@
 public interface Printable {
-    public abstract void setPrinterName(String name);   // Ì¾Á°¤ÎÀßÄê
-    public abstract String getPrinterName();            // Ì¾Á°¤Î¼èÆÀ
-    public abstract void print(String string);          // Ê¸»úÎóÉ½¼¨(¥×¥ê¥ó¥È¥¢¥¦¥È)
+  public abstract void setPrinterName(String name); // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract String getPrinterName(); // Ì¾ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
+
+  public abstract void print(String string); // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½(ï¿½×¥ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½)
 }

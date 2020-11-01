@@ -1,12 +1,15 @@
-public abstract class AbstractDisplay { // Ãê¾İ¥¯¥é¥¹AbstractDisplay
-    public abstract void open();        // ¥µ¥Ö¥¯¥é¥¹¤Ë¼ÂÁõ¤ò¤Ş¤«¤»¤ëÃê¾İ¥á¥½¥Ã¥É(1) open
-    public abstract void print();       // ¥µ¥Ö¥¯¥é¥¹¤Ë¼ÂÁõ¤ò¤Ş¤«¤»¤ëÃê¾İ¥á¥½¥Ã¥É(2) print
-    public abstract void close();       // ¥µ¥Ö¥¯¥é¥¹¤Ë¼ÂÁõ¤ò¤Ş¤«¤»¤ëÃê¾İ¥á¥½¥Ã¥É(3) close
-    public final void display() {       // ¤³¤ÎÃê¾İ¥¯¥é¥¹¤Ç¼ÂÁõ¤·¤Æ¤¤¤ë¥á¥½¥Ã¥Édisplay
-        open();                             // ¤Ş¤ºopen¤·¤Æ¡Ä
-        for (int i = 0; i < 5; i++) {       // 5²óprint¤ò·«¤êÊÖ¤·¤Æ¡Ä
-            print();                    
-        }
-        close();                            // ¡ÄºÇ¸å¤Ëclose¤¹¤ë¡£¤³¤ì¤¬display¥á¥½¥Ã¥É¤Ç¼ÂÁõ¤µ¤ì¤Æ¤¤¤ëÆâÍÆ¡£
+public abstract class AbstractDisplay { // ï¿½ï¿½İ¥ï¿½ï¿½é¥¹AbstractDisplay
+  public abstract void open(); // ï¿½ï¿½ï¿½Ö¥ï¿½ï¿½é¥¹ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½Ş¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¥á¥½ï¿½Ã¥ï¿½(1) open
+
+  public abstract void print(); // ï¿½ï¿½ï¿½Ö¥ï¿½ï¿½é¥¹ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½Ş¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¥á¥½ï¿½Ã¥ï¿½(2) print
+
+  public abstract void close(); // ï¿½ï¿½ï¿½Ö¥ï¿½ï¿½é¥¹ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½Ş¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¥á¥½ï¿½Ã¥ï¿½(3) close
+
+  public final void display() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¥ï¿½ï¿½é¥¹ï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½á¥½ï¿½Ã¥ï¿½display
+    open(); // ï¿½Ş¤ï¿½openï¿½ï¿½ï¿½Æ¡ï¿½
+    for (int i = 0; i < 5; i++) { // 5ï¿½ï¿½printï¿½ò·«¤ï¿½ï¿½Ö¤ï¿½ï¿½Æ¡ï¿½
+      print();
     }
+    close(); // ï¿½ÄºÇ¸ï¿½ï¿½closeï¿½ï¿½ï¿½ë¡£ï¿½ï¿½ï¿½ì¤¬displayï¿½á¥½ï¿½Ã¥É¤Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
+  }
 }

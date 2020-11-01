@@ -1,38 +1,42 @@
 import java.io.*;
 
 public class FileDisplayImpl extends DisplayImpl {
-    private String filename;
-    private BufferedReader reader;
-    private final int MAX_READAHEAD_LIMIT = 4096;   // ·«¤êÊÖ¤·É½¼¨¤µ¤»¤é¤ì¤ë¾å¸Â¡Ê¥Ð¥Ã¥Õ¥¡¥µ¥¤¥º¡Ë
-    public FileDisplayImpl(String filename) {
-        this.filename = filename;
+  private String filename;
+  private BufferedReader reader;
+  private final int MAX_READAHEAD_LIMIT = 4096; // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¡Ê¥Ð¥Ã¥Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public FileDisplayImpl(String filename) {
+    this.filename = filename;
+  }
+
+  public void rawOpen() {
+    try {
+      reader = new BufferedReader(new FileReader(filename));
+      reader.mark(MAX_READAHEAD_LIMIT);
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    public void rawOpen() {
-        try {
-            reader = new BufferedReader(new FileReader(filename));
-            reader.mark(MAX_READAHEAD_LIMIT);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("=-=-=-=-=-= " + filename + " =-=-=-=-=-="); // ¾þ¤êÏÈ
+    System.out.println("=-=-=-=-=-= " + filename + " =-=-=-=-=-="); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  }
+
+  public void rawPrint() {
+    try {
+      String line;
+      reader.reset(); // markï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Þ¤Ç´ï¿½ï¿½ï¿½ï¿½á¤¹
+      while ((line = reader.readLine()) != null) {
+        System.out.println("> " + line);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    public void rawPrint() {
-        try {
-            String line;
-            reader.reset(); // mark¤·¤¿°ÌÃÖ¤Þ¤Ç´¬¤­Ìá¤¹
-            while ((line = reader.readLine()) != null) {
-                System.out.println("> " + line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  }
+
+  public void rawClose() {
+    System.out.println("=-=-=-=-=-= "); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    try {
+      reader.close();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    public void rawClose() {
-        System.out.println("=-=-=-=-=-= "); // ¾þ¤êÏÈ
-        try {
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+  }
 }

@@ -1,6 +1,6 @@
-import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 public class FrameBuilder extends Builder implements ActionListener {
   private JFrame frame = new JFrame();
@@ -27,11 +27,12 @@ public class FrameBuilder extends Builder implements ActionListener {
   protected void buildDone() {
     frame.getContentPane().add(box);
     frame.pack();
-    frame.addWindowListener(new WindowAdapter() {
-      public void windowClosing(WindowEvent e) {
-        System.exit(0);
-      }
-    });
+    frame.addWindowListener(
+        new WindowAdapter() {
+          public void windowClosing(WindowEvent e) {
+            System.exit(0);
+          }
+        });
   }
 
   public JFrame getResult() {

@@ -31,7 +31,7 @@ public class Player { // じゃんけんを行う人を表現するクラス
   }
 
   public String toString() {
-    return "[" + name + ":" + gamecount + "games, " + wincount + " win, " + losecount + " lose" + "]";
+    return "[" + name + ":" + gamecount + "games, " + wincount + " win, " + losecount + " lose"
+        + "]";
   }
-
 }

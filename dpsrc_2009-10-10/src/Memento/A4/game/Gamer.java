@@ -1,58 +1,66 @@
 package game;
+
 import java.util.*;
 
 public class Gamer {
-    private int money;                          // ½ê»ý¶â
-    private List fruits = new ArrayList(); // ¥Õ¥ë¡¼¥Ä
-    private Random random = new Random();       // Íð¿ôÈ¯À¸´ï
-    private static String[] fruitsname = {      // ¥Õ¥ë¡¼¥ÄÌ¾¤ÎÉ½
-        "¥ê¥ó¥´", "¤Ö¤É¤¦", "¥Ð¥Ê¥Ê", "¤ß¤«¤ó",
-    };
-    public Gamer(int money) {                   // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.money = money;
+  private int money; // ï¿½ï¿½ï¿½ï¿½ï¿½
+  private List fruits = new ArrayList(); // ï¿½Õ¥ë¡¼ï¿½ï¿½
+  private Random random = new Random(); // ï¿½ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½
+  private static String[] fruitsname = { // ï¿½Õ¥ë¡¼ï¿½ï¿½Ì¾ï¿½ï¿½É½
+    "ï¿½ï¿½ï¿½", "ï¿½Ö¤É¤ï¿½", "ï¿½Ð¥Ê¥ï¿½", "ï¿½ß¤ï¿½ï¿½ï¿½",
+  };
+
+  public Gamer(int money) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.money = money;
+  }
+
+  public int getMoney() { // ï¿½ï¿½ï¿½ß¤Î½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return money;
+  }
+
+  public void bet() { // ï¿½Ò¤ï¿½ï¿½ï¿½Ä¥ï¿½ï¿½ï¿½ï¿½ï¿½Î¿Ê¹ï¿½
+    int dice = random.nextInt(6) + 1; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¿¶¤ï¿½
+    if (dice == 1) { // 1ï¿½ï¿½ï¿½Ü¡Ä½ï¿½ï¿½ï¿½â¤¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+      money += 100;
+      System.out.println("ï¿½ï¿½ï¿½ï¿½â¤¬ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+    } else if (dice == 2) { // 2ï¿½ï¿½ï¿½Ü¡Ä½ï¿½ï¿½ï¿½â¤¬È¾Ê¬ï¿½Ë¤Ê¤ï¿½
+      money /= 2;
+      System.out.println("ï¿½ï¿½ï¿½ï¿½â¤¬È¾Ê¬ï¿½Ë¤Ê¤ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+    } else if (dice == 6) { // 6ï¿½ï¿½ï¿½Ü¡Ä¥Õ¥ë¡¼ï¿½Ä¤ï¿½ï¿½é¤¦
+      String f = getFruit();
+      System.out.println("ï¿½Õ¥ë¡¼ï¿½ï¿½(" + f + ")ï¿½ï¿½ï¿½é¤¤ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+      fruits.add(f);
+    } else { // ï¿½ï¿½ï¿½ï¿½Ê³ï¿½ï¿½Ä²ï¿½ï¿½âµ¯ï¿½ï¿½ï¿½Ê¤ï¿½
+      System.out.println("ï¿½ï¿½ï¿½âµ¯ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
-    public int getMoney() {                     // ¸½ºß¤Î½ê»ý¶â¤òÆÀ¤ë
-        return money;
+  }
+
+  public Memento createMemento() { // ï¿½ï¿½ï¿½Ê¥Ã¥×¥ï¿½ï¿½ï¿½Ã¥È¤ï¿½È¤ï¿½
+    Memento m = new Memento(money);
+    Iterator it = fruits.iterator();
+    while (it.hasNext()) {
+      String f = (String) it.next();
+      if (f.startsWith("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")) { // ï¿½Õ¥ë¡¼ï¿½Ä¤Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤ï¿½ï¿½ï¿½ï¿½ï¿½Â¸
+        m.addFruit(f);
+      }
     }
-    public void bet() {                         // ÅÒ¤±¤ë¡Ä¥²¡¼¥à¤Î¿Ê¹Ô
-        int dice = random.nextInt(6) + 1;           // ¥µ¥¤¥³¥í¤ò¿¶¤ë
-        if (dice == 1) {                            // 1¤ÎÌÜ¡Ä½ê»ý¶â¤¬Áý¤¨¤ë
-            money += 100;
-            System.out.println("½ê»ý¶â¤¬Áý¤¨¤Þ¤·¤¿¡£");
-        } else if (dice == 2) {                     // 2¤ÎÌÜ¡Ä½ê»ý¶â¤¬È¾Ê¬¤Ë¤Ê¤ë
-            money /= 2;
-            System.out.println("½ê»ý¶â¤¬È¾Ê¬¤Ë¤Ê¤ê¤Þ¤·¤¿¡£");
-        } else if (dice == 6) {                     // 6¤ÎÌÜ¡Ä¥Õ¥ë¡¼¥Ä¤ò¤â¤é¤¦
-            String f = getFruit();
-            System.out.println("¥Õ¥ë¡¼¥Ä(" + f + ")¤ò¤â¤é¤¤¤Þ¤·¤¿¡£");
-            fruits.add(f);
-        } else {                                    // ¤½¤ì°Ê³°¡Ä²¿¤âµ¯¤­¤Ê¤¤
-            System.out.println("²¿¤âµ¯¤³¤ê¤Þ¤»¤ó¤Ç¤·¤¿¡£");
-        }
+    return m;
+  }
+
+  public void restoreMemento(Memento memento) { // ï¿½ï¿½ï¿½ï¿½É¥ï¿½ï¿½ï¿½Ô¤ï¿½
+    this.money = memento.money;
+    this.fruits = memento.getFruits();
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[money = " + money + ", fruits = " + fruits + "]";
+  }
+
+  private String getFruit() { // ï¿½Õ¥ë¡¼ï¿½Ä¤ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    String prefix = "";
+    if (random.nextBoolean()) {
+      prefix = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
     }
-    public Memento createMemento() {                // ¥¹¥Ê¥Ã¥×¥·¥ç¥Ã¥È¤ò¤È¤ë
-        Memento m = new Memento(money);
-        Iterator it = fruits.iterator();
-        while (it.hasNext()) {
-            String f = (String)it.next();
-            if (f.startsWith("¤ª¤¤¤·¤¤")) {         // ¥Õ¥ë¡¼¥Ä¤Ï¤ª¤¤¤·¤¤¤â¤Î¤À¤±ÊÝÂ¸
-                m.addFruit(f);
-            }
-        }
-        return m;
-    }
-    public void restoreMemento(Memento memento) {   // ¥¢¥ó¥É¥¥¤ò¹Ô¤¦
-        this.money = memento.money;
-        this.fruits = memento.getFruits();
-    }
-    public String toString() {                      // Ê¸»úÎóÉ½¸½
-        return "[money = " + money + ", fruits = " + fruits + "]";
-    }
-    private String getFruit() {                     // ¥Õ¥ë¡¼¥Ä¤ò1¸ÄÆÀ¤ë
-        String prefix = "";
-        if (random.nextBoolean()) {
-            prefix = "¤ª¤¤¤·¤¤";
-        }
-        return prefix + fruitsname[random.nextInt(fruitsname.length)];
-    }
+    return prefix + fruitsname[random.nextInt(fruitsname.length)];
+  }
 }

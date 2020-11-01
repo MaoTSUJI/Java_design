@@ -1,124 +1,137 @@
 package turtle;
 
+import java.awt.*;
+import language.ExecuteException;
 import language.Executor;
 import language.ExecutorFactory;
-import language.ExecuteException;
-import java.awt.*;
 
 public class TurtleCanvas extends Canvas implements ExecutorFactory {
-    final static int UNIT_LENGTH = 30;  // Æ°¤¯¤È¤­¤ÎÃ±°ÌÄ¹¤µ
-    final static int DIRECTION_UP = 0; // ¾å¸þ¤­
-    final static int DIRECTION_RIGHT = 3; // ±¦¸þ¤­
-    final static int DIRECTION_DOWN = 6; // ²¼¸þ¤­
-    final static int DIRECTION_LEFT = 9; // º¸¸þ¤­
-    final static int RELATIVE_DIRECTION_RIGHT = 3; // ±¦¤Ë¸þ¤¯
-    final static int RELATIVE_DIRECTION_LEFT = -3; // º¸¤Ë¸þ¤¯
-    final static int RADIUS = 3; // È¾·Â
-    private int direction = 0;
-    private Point position;
-    private Executor executor;
-    public TurtleCanvas(int width, int height) {
-        setSize(width, height);
-        initialize();
+  static final int UNIT_LENGTH = 30; // Æ°ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½Ã±ï¿½ï¿½Ä¹ï¿½ï¿½
+  static final int DIRECTION_UP = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½
+  static final int DIRECTION_RIGHT = 3; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  static final int DIRECTION_DOWN = 6; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  static final int DIRECTION_LEFT = 9; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  static final int RELATIVE_DIRECTION_RIGHT = 3; // ï¿½ï¿½ï¿½Ë¸ï¿½ï¿½ï¿½
+  static final int RELATIVE_DIRECTION_LEFT = -3; // ï¿½ï¿½ï¿½Ë¸ï¿½ï¿½ï¿½
+  static final int RADIUS = 3; // È¾ï¿½ï¿½
+  private int direction = 0;
+  private Point position;
+  private Executor executor;
+
+  public TurtleCanvas(int width, int height) {
+    setSize(width, height);
+    initialize();
+  }
+
+  public void setExecutor(Executor executor) {
+    this.executor = executor;
+  }
+
+  void setRelativeDirection(int relativeDirection) {
+    setDirection(direction + relativeDirection);
+  }
+
+  void setDirection(int direction) {
+    if (direction < 0) {
+      direction = 12 - (-direction) % 12;
+    } else {
+      direction = direction % 12;
     }
-    public void setExecutor(Executor executor) {
-        this.executor = executor;
+    this.direction = direction % 12;
+  }
+
+  void go(int length) {
+    int newx = position.x;
+    int newy = position.y;
+    switch (direction) {
+      case DIRECTION_UP:
+        newy -= length;
+        break;
+      case DIRECTION_RIGHT:
+        newx += length;
+        break;
+      case DIRECTION_DOWN:
+        newy += length;
+        break;
+      case DIRECTION_LEFT:
+        newx -= length;
+        break;
+      default:
+        break;
     }
-    void setRelativeDirection(int relativeDirection) {
-        setDirection(direction + relativeDirection);
+    Graphics g = getGraphics();
+    if (g != null) {
+      g.drawLine(position.x, position.y, newx, newy);
+      g.fillOval(newx - RADIUS, newy - RADIUS, RADIUS * 2 + 1, RADIUS * 2 + 1);
     }
-    void setDirection(int direction) {
-        if (direction < 0) {
-            direction = 12 - (-direction) % 12;
-        } else {
-            direction = direction % 12;
-        }
-        this.direction = direction % 12;
+    position.x = newx;
+    position.y = newy;
+  }
+
+  public Executor createExecutor(String name) {
+    if (name.equals("go")) {
+      return new GoExecutor(this);
+    } else if (name.equals("right")) {
+      return new DirectionExecutor(this, RELATIVE_DIRECTION_RIGHT);
+    } else if (name.equals("left")) {
+      return new DirectionExecutor(this, RELATIVE_DIRECTION_LEFT);
+    } else {
+      return null;
     }
-    void go(int length) {
-        int newx = position.x;
-        int newy = position.y;
-        switch (direction) {
-        case DIRECTION_UP:
-            newy -= length;
-            break;
-        case DIRECTION_RIGHT:
-            newx += length;
-            break;
-        case DIRECTION_DOWN:
-            newy += length;
-            break;
-        case DIRECTION_LEFT:
-            newx -= length;
-            break;
-        default:
-            break;
-        }
-        Graphics g = getGraphics();
-        if (g != null) {
-            g.drawLine(position.x, position.y, newx, newy);
-            g.fillOval(newx - RADIUS, newy - RADIUS, RADIUS * 2 + 1, RADIUS * 2 + 1);
-        }
-        position.x = newx;
-        position.y = newy;
+  }
+
+  public void initialize() {
+    Dimension size = getSize();
+    position = new Point(size.width / 2, size.height / 2);
+    direction = 0;
+    setForeground(Color.red);
+    setBackground(Color.white);
+    Graphics g = getGraphics();
+    if (g != null) {
+      g.clearRect(0, 0, size.width, size.height);
     }
-    public Executor createExecutor(String name) {
-        if (name.equals("go")) {
-            return new GoExecutor(this);
-        } else if (name.equals("right")) {
-            return new DirectionExecutor(this, RELATIVE_DIRECTION_RIGHT);
-        } else if (name.equals("left")) {
-            return new DirectionExecutor(this, RELATIVE_DIRECTION_LEFT);
-        } else {
-            return null;
-        }
+  }
+
+  public void paint(Graphics g) {
+    initialize();
+    if (executor != null) {
+      try {
+        executor.execute();
+      } catch (ExecuteException e) {
+      }
     }
-    public void initialize() {
-        Dimension size = getSize();
-        position = new Point(size.width / 2, size.height / 2);
-        direction = 0;
-        setForeground(Color.red);
-        setBackground(Color.white);
-        Graphics g = getGraphics();
-        if (g != null) {
-            g.clearRect(0, 0, size.width, size.height);
-        }
-    }
-    public void paint(Graphics g) {         
-        initialize();                       
-        if (executor != null) {             
-            try {                           
-                executor.execute();         
-            } catch (ExecuteException e) {  
-            }                               
-        }                                   
-    }                                       
+  }
 }
 
 abstract class TurtleExecutor implements Executor {
-    protected TurtleCanvas canvas;
-    public TurtleExecutor(TurtleCanvas canvas) {
-        this.canvas = canvas;
-    }
-    public abstract void execute();
+  protected TurtleCanvas canvas;
+
+  public TurtleExecutor(TurtleCanvas canvas) {
+    this.canvas = canvas;
+  }
+
+  public abstract void execute();
 }
 
 class GoExecutor extends TurtleExecutor {
-    public GoExecutor(TurtleCanvas canvas) {
-        super(canvas);
-    }
-    public void execute() {
-        canvas.go(TurtleCanvas.UNIT_LENGTH);
-    }
+  public GoExecutor(TurtleCanvas canvas) {
+    super(canvas);
+  }
+
+  public void execute() {
+    canvas.go(TurtleCanvas.UNIT_LENGTH);
+  }
 }
 
 class DirectionExecutor extends TurtleExecutor {
-    private int relativeDirection;
-    public DirectionExecutor(TurtleCanvas canvas, int relativeDirection) {
-        super(canvas);
-        this.relativeDirection = relativeDirection;
-    }
-    public void execute() {
-        canvas.setRelativeDirection(relativeDirection);
-    }
+  private int relativeDirection;
+
+  public DirectionExecutor(TurtleCanvas canvas, int relativeDirection) {
+    super(canvas);
+    this.relativeDirection = relativeDirection;
+  }
+
+  public void execute() {
+    canvas.setRelativeDirection(relativeDirection);
+  }
 }

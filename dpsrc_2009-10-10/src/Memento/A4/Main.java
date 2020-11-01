@@ -1,67 +1,70 @@
-import game.Memento;
 import game.Gamer;
+import game.Memento;
 import java.io.*;
 
 public class Main {
-    public static final String SAVEFILENAME = "game.dat";       
-    public static void main(String[] args) {
-        Gamer gamer = new Gamer(100);               // ºÇ½é¤Î½ê»ý¶â¤Ï100
-        Memento memento = loadMemento();            // ¥Õ¥¡¥¤¥ë¤«¤é¥í¡¼¥É   
-        if (memento != null) {
-            System.out.println("Á°²óÊÝÂ¸¤·¤¿·ë²Ì¤«¤é¥¹¥¿¡¼¥È¤·¤Þ¤¹¡£");
-            gamer.restoreMemento(memento);
-        } else {
-            System.out.println("¿·µ¬¤Ë¥¹¥¿¡¼¥È¤·¤Þ¤¹¡£");
-            memento = gamer.createMemento();
-        }
-        for (int i = 0; i < 100; i++) {
-            System.out.println("==== " + i);        // ²ó¿ôÉ½¼¨
-            System.out.println("¸½¾õ:" + gamer);    // ¸½ºß¤Î¼ç¿Í¸ø¤Î¾õÂÖÉ½¼¨
+  public static final String SAVEFILENAME = "game.dat";
 
-            gamer.bet();    // ¥²¡¼¥à¤ò¿Ê¤á¤ë
-
-            System.out.println("½ê»ý¶â¤Ï" + gamer.getMoney() + "±ß¤Ë¤Ê¤ê¤Þ¤·¤¿¡£");
-
-            // Memento¤Î¼è¤ê°·¤¤¤Î·èÄê
-            if (gamer.getMoney() > memento.getMoney()) {
-                System.out.println("    ¡Ê¤À¤¤¤ÖÁý¤¨¤¿¤Î¤Ç¡¢¸½ºß¤Î¾õÂÖ¤òÊÝÂ¸¤·¤Æ¤ª¤³¤¦¡Ë");
-                memento = gamer.createMemento();
-                saveMemento(memento);   // ¥Õ¥¡¥¤¥ë¤ËÊÝÂ¸   
-            } else if (gamer.getMoney() < memento.getMoney() / 2) {
-                System.out.println("    ¡Ê¤À¤¤¤Ö¸º¤Ã¤¿¤Î¤Ç¡¢°ÊÁ°¤Î¾õÂÖ¤ËÉüµ¢¤·¤è¤¦¡Ë");
-                gamer.restoreMemento(memento);
-            }
-
-            // »þ´ÖÂÔ¤Á
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            System.out.println("");
-        }
+  public static void main(String[] args) {
+    Gamer gamer = new Gamer(100); // ï¿½Ç½ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½100
+    Memento memento = loadMemento(); // ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ë¤«ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (memento != null) {
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¤ï¿½ï¿½é¥¹ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+      gamer.restoreMemento(memento);
+    } else {
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ë¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+      memento = gamer.createMemento();
     }
-    public static void saveMemento(Memento memento) {   
-        try {
-            ObjectOutput out = new ObjectOutputStream(new FileOutputStream(SAVEFILENAME));
-            out.writeObject(memento);
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    for (int i = 0; i < 100; i++) {
+      System.out.println("==== " + i); // ï¿½ï¿½ï¿½É½ï¿½ï¿½
+      System.out.println("ï¿½ï¿½ï¿½ï¿½:" + gamer); // ï¿½ï¿½ï¿½ß¤Î¼ï¿½Í¸ï¿½ï¿½Î¾ï¿½ï¿½ï¿½É½ï¿½ï¿½
+
+      gamer.bet(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½
+
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + gamer.getMoney() + "ï¿½ß¤Ë¤Ê¤ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+
+      // Mementoï¿½Î¼ï¿½ê°·ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½
+      if (gamer.getMoney() > memento.getMoney()) {
+        System.out.println("    ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤Ç¡ï¿½ï¿½ï¿½ï¿½ß¤Î¾ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        memento = gamer.createMemento();
+        saveMemento(memento); // ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸
+      } else if (gamer.getMoney() < memento.getMoney() / 2) {
+        System.out.println("    ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ã¤ï¿½ï¿½Î¤Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è¤¦ï¿½ï¿½");
+        gamer.restoreMemento(memento);
+      }
+
+      // ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+      }
+      System.out.println("");
     }
-    public static Memento loadMemento() {               
-        Memento memento = null;
-        try {
-            ObjectInput in = new ObjectInputStream(new FileInputStream(SAVEFILENAME));
-            memento = (Memento)in.readObject();
-            in.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return memento;
+  }
+
+  public static void saveMemento(Memento memento) {
+    try {
+      ObjectOutput out = new ObjectOutputStream(new FileOutputStream(SAVEFILENAME));
+      out.writeObject(memento);
+      out.close();
+    } catch (IOException e) {
+      e.printStackTrace();
     }
+  }
+
+  public static Memento loadMemento() {
+    Memento memento = null;
+    try {
+      ObjectInput in = new ObjectInputStream(new FileInputStream(SAVEFILENAME));
+      memento = (Memento) in.readObject();
+      in.close();
+    } catch (FileNotFoundException e) {
+      System.out.println(e.toString());
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+    return memento;
+  }
 }

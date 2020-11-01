@@ -1,54 +1,54 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
 import language.InterpreterFacade;
 import turtle.TurtleCanvas;
 
-import java.util.*;
-import java.io.*;
-import java.awt.*;
-import java.awt.event.*;
-
 public class Main extends Frame implements ActionListener {
-    private TurtleCanvas canvas = new TurtleCanvas(400, 400);
-    private InterpreterFacade facade = new InterpreterFacade(canvas);
-    private TextField programTextField = new TextField("program repeat 3 go right go left end end");
+  private TurtleCanvas canvas = new TurtleCanvas(400, 400);
+  private InterpreterFacade facade = new InterpreterFacade(canvas);
+  private TextField programTextField = new TextField("program repeat 3 go right go left end end");
 
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public Main(String title) {
-        super(title);
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public Main(String title) {
+    super(title);
 
-        canvas.setExecutor(facade);
+    canvas.setExecutor(facade);
 
-        setLayout(new BorderLayout());
+    setLayout(new BorderLayout());
 
-        programTextField.addActionListener(this);
+    programTextField.addActionListener(this);
 
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
+    this.addWindowListener(
+        new WindowAdapter() {
+          public void windowClosing(WindowEvent e) {
+            System.exit(0);
+          }
         });
 
-        add(programTextField, BorderLayout.NORTH);
-        add(canvas, BorderLayout.CENTER);
-        pack();
-        parseAndExecute();
-        show();
-    }
+    add(programTextField, BorderLayout.NORTH);
+    add(canvas, BorderLayout.CENTER);
+    pack();
+    parseAndExecute();
+    show();
+  }
 
-    // ActionListenerÍÑ
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == programTextField) {
-            parseAndExecute();
-        }
+  // ActionListenerï¿½ï¿½
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == programTextField) {
+      parseAndExecute();
     }
+  }
 
-    private void parseAndExecute() {
-        String programText = programTextField.getText();
-        System.out.println("programText = " + programText);
-        facade.parse(programText);
-        canvas.repaint();
-    }
+  private void parseAndExecute() {
+    String programText = programTextField.getText();
+    System.out.println("programText = " + programText);
+    facade.parse(programText);
+    canvas.repaint();
+  }
 
-    public static void main(String[] args) {
-        new Main("Interpreter Pattern Sample");
-    }
+  public static void main(String[] args) {
+    new Main("Interpreter Pattern Sample");
+  }
 }

@@ -1,16 +1,12 @@
 package pagemaker;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Properties;
 
-import javax.swing.text.html.HTMLWriter;
-
-import java.io.FileWriter;
-
 public class PageMaker {
   private PageMaker() { // インスタンスを作らないのでprivate宣言する
-
   }
 
   public static void makeWelcomePage(String mailaddr, String filename) { // 外部に対してはこのメソッドを呼び出すだけでOK
@@ -45,7 +41,5 @@ public class PageMaker {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
-
 }

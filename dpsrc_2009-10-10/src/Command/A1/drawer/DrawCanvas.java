@@ -1,43 +1,43 @@
 package drawer;
 
 import command.*;
-
-import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
 public class DrawCanvas extends Canvas implements Drawable {
-    // ÉÁ²è¿§               
-    private Color color;    
-    // ÉÁ²è¤¹¤ëÅÀ¤ÎÈ¾·Â     
-    private int radius;     
-    // ÍúÎò
-    private MacroCommand history;
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public DrawCanvas(int width, int height, MacroCommand history) {
-        setSize(width, height);
-        setBackground(Color.white);
-        this.history = history;
-        init();                             
-    }
-    // ÍúÎòÁ´ÂÎ¤òºÆÉÁ²è
-    public void paint(Graphics g) {
-        history.execute();
-    }
-    // ½é´ü²½                               
-    public void init() {                    
-        color = Color.red;                  
-        radius = 6;                         
-        history.append(new ColorCommand(this, color));
-    }                                       
-    // ÉÁ²è
-    public void draw(int x, int y) {
-        Graphics g = getGraphics();
-        g.setColor(color);
-        g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
-    }
-    public void setColor(Color color) {     
-        this.color = color;                 
-    }                                       
+  // ï¿½ï¿½ï¿½è¿§
+  private Color color;
+  // ï¿½ï¿½ï¿½è¤¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¾ï¿½ï¿½
+  private int radius;
+  // ï¿½ï¿½ï¿½ï¿½
+  private MacroCommand history;
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public DrawCanvas(int width, int height, MacroCommand history) {
+    setSize(width, height);
+    setBackground(Color.white);
+    this.history = history;
+    init();
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void paint(Graphics g) {
+    history.execute();
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void init() {
+    color = Color.red;
+    radius = 6;
+    history.append(new ColorCommand(this, color));
+  }
+  // ï¿½ï¿½ï¿½ï¿½
+  public void draw(int x, int y) {
+    Graphics g = getGraphics();
+    g.setColor(color);
+    g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+  }
+
+  public void setColor(Color color) {
+    this.color = color;
+  }
 }

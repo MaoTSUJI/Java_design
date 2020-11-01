@@ -1,12 +1,13 @@
 public class OddSupport extends Support {
-    public OddSupport(String name) {                // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        super(name);
+  public OddSupport(String name) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    super(name);
+  }
+
+  protected boolean resolve(Trouble trouble) { // ï¿½ï¿½ï¿½ï¿½Ñ¥á¥½ï¿½Ã¥ï¿½
+    if (trouble.getNumber() % 2 == 1) {
+      return true;
+    } else {
+      return false;
     }
-    protected boolean resolve(Trouble trouble) {    // ²ò·èÍÑ¥á¥½¥Ã¥É
-        if (trouble.getNumber() % 2 == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  }
 }

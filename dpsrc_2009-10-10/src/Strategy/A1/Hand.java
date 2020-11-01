@@ -1,38 +1,42 @@
 public class Hand {
-    public static final int HANDVALUE_GUU = 0;  // ¥°¡¼¤òÉ½¤¹ÃÍ
-    public static final int HANDVALUE_CHO = 1;  // ¥Á¥ç¥­¤òÉ½¤¹ÃÍ
-    public static final int HANDVALUE_PAA = 2;  // ¥Ñ¡¼¤òÉ½¤¹ÃÍ
-    public static final Hand[] hand = {         // ¤¸¤ã¤ó¤±¤ó¤Î¼ê¤òÉ½¤¹3¤Ä¤Î¥¤¥ó¥¹¥¿¥ó¥¹
-        new Hand(HANDVALUE_GUU),
-        new Hand(HANDVALUE_CHO),
-        new Hand(HANDVALUE_PAA),
-    };
-    private static final String[] name = {      // ¤¸¤ã¤ó¤±¤ó¤Î¼ê¤ÎÊ¸»úÎóÉ½¸½
-        "¥°¡¼", "¥Á¥ç¥­", "¥Ñ¡¼",
-    };
-    private int handvalue;                      // ¤¸¤ã¤ó¤±¤ó¤Î¼ê¤ÎÃÍ
-    private Hand(int handvalue) {
-        this.handvalue = handvalue;
+  public static final int HANDVALUE_GUU = 0; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+  public static final int HANDVALUE_CHO = 1; // ï¿½ï¿½ï¿½ç¥­ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+  public static final int HANDVALUE_PAA = 2; // ï¿½Ñ¡ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+  public static final Hand[] hand = { // ï¿½ï¿½ï¿½ï¿½ó¤±¤ï¿½Î¼ï¿½ï¿½É½ï¿½ï¿½3ï¿½Ä¤Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ï¿½
+    new Hand(HANDVALUE_GUU), new Hand(HANDVALUE_CHO), new Hand(HANDVALUE_PAA),
+  };
+  private static final String[] name = { // ï¿½ï¿½ï¿½ï¿½ó¤±¤ï¿½Î¼ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ç¥­", "ï¿½Ñ¡ï¿½",
+  };
+  private int handvalue; // ï¿½ï¿½ï¿½ï¿½ó¤±¤ï¿½Î¼ï¿½ï¿½ï¿½ï¿½
+
+  private Hand(int handvalue) {
+    this.handvalue = handvalue;
+  }
+
+  public static Hand getHand(int handvalue) { // ï¿½Í¤ï¿½ï¿½é¥¤ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    return hand[handvalue];
+  }
+
+  public boolean isStrongerThan(Hand h) { // thisï¿½ï¿½hï¿½ï¿½ê¶¯ï¿½ï¿½ï¿½È¤ï¿½true
+    return fight(h) == 1;
+  }
+
+  public boolean isWeakerThan(Hand h) { // thisï¿½ï¿½hï¿½ï¿½ï¿½å¤¤ï¿½È¤ï¿½true
+    return fight(h) == -1;
+  }
+
+  private int fight(Hand h) { // ï¿½ï¿½ï¿½ï¿½Ê¬ï¿½ï¿½ï¿½ï¿½0, thisï¿½Î¾ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½1, hï¿½Î¾ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½-1
+    if (this == h) {
+      return 0;
+    } else if ((this.handvalue + 1) % 3 == h.handvalue) {
+      return 1;
+    } else {
+      return -1;
     }
-    public static Hand getHand(int handvalue) { // ÃÍ¤«¤é¥¤¥ó¥¹¥¿¥ó¥¹¤òÆÀ¤ë
-        return hand[handvalue];
-    }
-    public boolean isStrongerThan(Hand h) {     // this¤¬h¤è¤ê¶¯¤¤¤È¤­true
-        return fight(h) == 1;
-    }
-    public boolean isWeakerThan(Hand h) {       // this¤¬h¤è¤ê¼å¤¤¤È¤­true
-        return fight(h) == -1;
-    }
-    private int fight(Hand h) {                 // °ú¤­Ê¬¤±¤Ï0, this¤Î¾¡¤Á¤Ê¤é1, h¤Î¾¡¤Á¤Ê¤é-1
-        if (this == h) {
-            return 0;
-        } else if ((this.handvalue + 1) % 3 == h.handvalue) {
-            return 1;
-        } else {
-            return -1;
-        }
-    }
-    public String toString() {                  // Ê¸»úÎóÉ½¸½¤ØÊÑ´¹
-        return name[handvalue];
-    }
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
+    return name[handvalue];
+  }
 }

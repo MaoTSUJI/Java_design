@@ -31,10 +31,7 @@ public abstract class Support {
 
   public abstract boolean resolve(Trouble trouble);
 
-  protected void done() {
-  }
+  protected void done() {}
 
-  protected void fail() {
-  }
-
+  protected void fail() {}
 }

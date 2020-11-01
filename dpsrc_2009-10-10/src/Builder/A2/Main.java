@@ -1,28 +1,29 @@
 public class Main {
-    public static void main(String[] args) {
-        if (args.length != 1) {
-            usage();
-            System.exit(0);
-        }
-        if (args[0].equals("plain")) {
-            TextBuilder textbuilder = new TextBuilder();
-            Director director = new Director(textbuilder);
-            director.construct();
-            String result = textbuilder.getResult();
-            System.out.println(result);
-        } else if (args[0].equals("html")) {
-            HTMLBuilder htmlbuilder = new HTMLBuilder();
-            Director director = new Director(htmlbuilder);
-            director.construct();
-            String filename = htmlbuilder.getResult();
-            System.out.println(filename + "¤¬ºîÀ®¤µ¤ì¤Þ¤·¤¿¡£");
-        } else {
-            usage();
-            System.exit(0);
-        }
+  public static void main(String[] args) {
+    if (args.length != 1) {
+      usage();
+      System.exit(0);
     }
-    public static void usage() {
-        System.out.println("Usage: java Main plain      ¥×¥ì¡¼¥ó¥Æ¥­¥¹¥È¤ÇÊ¸½ñºîÀ®");
-        System.out.println("Usage: java Main html       HTML¥Õ¥¡¥¤¥ë¤ÇÊ¸½ñºîÀ®");
+    if (args[0].equals("plain")) {
+      TextBuilder textbuilder = new TextBuilder();
+      Director director = new Director(textbuilder);
+      director.construct();
+      String result = textbuilder.getResult();
+      System.out.println(result);
+    } else if (args[0].equals("html")) {
+      HTMLBuilder htmlbuilder = new HTMLBuilder();
+      Director director = new Director(htmlbuilder);
+      director.construct();
+      String filename = htmlbuilder.getResult();
+      System.out.println(filename + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+    } else {
+      usage();
+      System.exit(0);
     }
+  }
+
+  public static void usage() {
+    System.out.println("Usage: java Main plain      ï¿½×¥ì¡¼ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½È¤ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½");
+    System.out.println("Usage: java Main html       HTMLï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½");
+  }
 }

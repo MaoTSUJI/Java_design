@@ -1,37 +1,37 @@
 public class BigString {
-    // ¡ÖÂç¤­¤ÊÊ¸»ú¡×¤ÎÇÛÎó
-    private BigChar[] bigchars;
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public BigString(String string) {
-        initShared(string);
+  // ï¿½ï¿½ï¿½ç¤­ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½×¤ï¿½ï¿½ï¿½ï¿½ï¿½
+  private BigChar[] bigchars;
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public BigString(String string) {
+    initShared(string);
+  }
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public BigString(String string, boolean shared) {
+    if (shared) {
+      initShared(string);
+    } else {
+      initUnshared(string);
     }
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public BigString(String string, boolean shared) {
-        if (shared) {
-            initShared(string);
-        } else {
-            initUnshared(string);
-        }
+  }
+  // ï¿½ï¿½Í­ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½
+  private void initShared(String string) {
+    bigchars = new BigChar[string.length()];
+    BigCharFactory factory = BigCharFactory.getInstance();
+    for (int i = 0; i < bigchars.length; i++) {
+      bigchars[i] = factory.getBigChar(string.charAt(i));
     }
-    // ¶¦Í­¤·¤Æ½é´ü²½
-    private void initShared(String string) {
-        bigchars = new BigChar[string.length()];
-        BigCharFactory factory = BigCharFactory.getInstance();
-        for (int i = 0; i < bigchars.length; i++) {
-            bigchars[i] = factory.getBigChar(string.charAt(i)); 
-        }
+  }
+  // ï¿½ï¿½Í­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private void initUnshared(String string) {
+    bigchars = new BigChar[string.length()];
+    for (int i = 0; i < bigchars.length; i++) {
+      bigchars[i] = new BigChar(string.charAt(i));
     }
-    // ¶¦Í­¤»¤º½é´ü²½
-    private void initUnshared(String string) {
-        bigchars = new BigChar[string.length()];
-        for (int i = 0; i < bigchars.length; i++) {
-            bigchars[i] = new BigChar(string.charAt(i));    
-        }
+  }
+  // É½ï¿½ï¿½
+  public void print() {
+    for (int i = 0; i < bigchars.length; i++) {
+      bigchars[i].print();
     }
-    // É½¼¨
-    public void print() {
-        for (int i = 0; i < bigchars.length; i++) {
-            bigchars[i].print();
-        }
-    }
+  }
 }

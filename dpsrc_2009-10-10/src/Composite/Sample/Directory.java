@@ -1,34 +1,39 @@
-import java.util.Iterator;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Directory extends Entry {
-    private String name;                    // ¥Ç¥£¥ì¥¯¥È¥ê¤ÎÌ¾Á°
-    private ArrayList directory = new ArrayList();      // ¥Ç¥£¥ì¥¯¥È¥ê¥¨¥ó¥È¥ê¤Î½¸¹ç
-    public Directory(String name) {         // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.name = name;
+  private String name; // ï¿½Ç¥ï¿½ï¿½ì¥¯ï¿½È¥ï¿½ï¿½Ì¾ï¿½ï¿½
+  private ArrayList directory = new ArrayList(); // ï¿½Ç¥ï¿½ï¿½ì¥¯ï¿½È¥ê¥¨ï¿½ï¿½È¥ï¿½Î½ï¿½ï¿½ï¿½
+
+  public Directory(String name) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.name = name;
+  }
+
+  public String getName() { // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return name;
+  }
+
+  public int getSize() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int size = 0;
+    Iterator it = directory.iterator();
+    while (it.hasNext()) {
+      Entry entry = (Entry) it.next();
+      size += entry.getSize();
     }
-    public String getName() {               // Ì¾Á°¤òÆÀ¤ë
-        return name;
+    return size;
+  }
+
+  public Entry add(Entry entry) { // ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½É²ï¿½
+    directory.add(entry);
+    return this;
+  }
+
+  protected void printList(String prefix) { // ï¿½ï¿½ï¿½ï¿½È¥ï¿½Î°ï¿½ï¿½ï¿½
+    System.out.println(prefix + "/" + this);
+    Iterator it = directory.iterator();
+    while (it.hasNext()) {
+      Entry entry = (Entry) it.next();
+      entry.printList(prefix + "/" + name);
     }
-    public int getSize() {                  // ¥µ¥¤¥º¤òÆÀ¤ë
-        int size = 0;
-        Iterator it = directory.iterator();
-        while (it.hasNext()) {
-            Entry entry = (Entry)it.next();
-            size += entry.getSize();
-        }
-        return size;
-    }
-    public Entry add(Entry entry) {         // ¥¨¥ó¥È¥ê¤ÎÄÉ²Ã
-        directory.add(entry);
-        return this;
-    }
-    protected void printList(String prefix) {       // ¥¨¥ó¥È¥ê¤Î°ìÍ÷
-        System.out.println(prefix + "/" + this);
-        Iterator it = directory.iterator();
-        while (it.hasNext()) {
-            Entry entry = (Entry)it.next();
-            entry.printList(prefix + "/" + name);
-        }
-    }
+  }
 }

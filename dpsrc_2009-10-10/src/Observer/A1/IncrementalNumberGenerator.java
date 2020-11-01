@@ -1,19 +1,22 @@
 public class IncrementalNumberGenerator extends NumberGenerator {
-    private int number;                     // ¸½ºß¤Î¿ô
-    private int end;                        // ½ªÎ»ÃÍ(¤³¤ÎÃÍ¤ò´Þ¤Þ¤Ê¤¤)
-    private int inc;                        // Áý²ÃÊ¬
-    public IncrementalNumberGenerator(int start, int end, int inc) {
-        this.number = start;
-        this.end = end;
-        this.inc = inc;
+  private int number; // ï¿½ï¿½ï¿½ß¤Î¿ï¿½
+  private int end; // ï¿½ï¿½Î»ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Í¤ï¿½Þ¤Þ¤Ê¤ï¿½)
+  private int inc; // ï¿½ï¿½ï¿½ï¿½Ê¬
+
+  public IncrementalNumberGenerator(int start, int end, int inc) {
+    this.number = start;
+    this.end = end;
+    this.inc = inc;
+  }
+
+  public int getNumber() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return number;
+  }
+
+  public void execute() {
+    while (number < end) {
+      notifyObservers();
+      number += inc;
     }
-    public int getNumber() {                // ¿ô¤ò¼èÆÀ¤¹¤ë
-        return number;
-    }
-    public void execute() {
-        while (number < end) {
-            notifyObservers();
-            number += inc;
-        }
-    }
+  }
 }

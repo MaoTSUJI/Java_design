@@ -1,24 +1,29 @@
-public class StringDisplay extends AbstractDisplay {    // StringDisplay¤â¡¢AbstractDisplay¤Î¥µ¥Ö¥¯¥é¥¹¡£
-    private String string;                              // É½¼¨¤¹¤ë¤Ù¤­Ê¸»úÎó¡£
-    private int width;                                  // ¥Ð¥¤¥ÈÃ±°Ì¤Ç·×»»¤·¤¿Ê¸»úÎó¤Î¡ÖÉý¡×¡£
-    public StringDisplay(String string) {               // ¥³¥ó¥¹¥È¥é¥¯¥¿¤ÇÅÏ¤µ¤ì¤¿Ê¸»úÎóstring¤ò¡¢
-        this.string = string;                           // ¥Õ¥£¡¼¥ë¥É¤Ëµ­²±¡£
-        this.width = string.getBytes().length;          // ¤½¤ì¤«¤é¥Ð¥¤¥ÈÃ±°Ì¤ÎÉý¤â¥Õ¥£¡¼¥ë¥É¤Ëµ­²±¤·¤Æ¤ª¤¤¤Æ¡¢¸å¤Ç»È¤¦¡£
+public class StringDisplay extends AbstractDisplay { // StringDisplayï¿½â¡¢AbstractDisplayï¿½Î¥ï¿½ï¿½Ö¥ï¿½ï¿½é¥¹ï¿½ï¿½
+  private String string; // É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¤ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½
+  private int width; // ï¿½Ð¥ï¿½ï¿½ï¿½Ã±ï¿½Ì¤Ç·×»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½Î¡ï¿½ï¿½ï¿½ï¿½×¡ï¿½
+
+  public StringDisplay(String string) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ì¤¿Ê¸ï¿½ï¿½ï¿½ï¿½stringï¿½ï¿½
+    this.string = string; // ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½É¤Ëµï¿½ï¿½ï¿½ï¿½ï¿½
+    this.width = string.getBytes().length; // ï¿½ï¿½ï¿½ì¤«ï¿½ï¿½Ð¥ï¿½ï¿½ï¿½Ã±ï¿½Ì¤ï¿½ï¿½ï¿½ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½É¤Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½Ç»È¤ï¿½ï¿½ï¿½
+  }
+
+  public void open() { // ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½é¥¤ï¿½É¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½openï¿½á¥½ï¿½Ã¥É¡ï¿½
+    printLine(); // ï¿½ï¿½ï¿½Î¥ï¿½ï¿½é¥¹ï¿½Î¥á¥½ï¿½Ã¥ï¿½printLineï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ë¡£
+  }
+
+  public void print() { // printï¿½á¥½ï¿½Ã¥É¤Ï¡ï¿½
+    System.out.println("|" + string + "|"); // ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½É¤Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"|"ï¿½ï¿½Ä¤ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+  }
+
+  public void close() { // closeï¿½á¥½ï¿½Ã¥É¤Ï¡ï¿½
+    printLine(); // openï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½printLineï¿½á¥½ï¿½Ã¥É¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ë¡£
+  }
+
+  private void printLine() { // openï¿½ï¿½closeï¿½ï¿½ï¿½ï¿½Æ¤Ð¤ï¿½ï¿½printLineï¿½á¥½ï¿½Ã¥É¤ï¿½ï¿½ï¿½privateï¿½Ê¤Î¤Ç¡ï¿½ï¿½ï¿½ï¿½Î¥ï¿½ï¿½é¥¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç»È¤ï¿½ï¿½ë¡£
+    System.out.print("+"); // ï¿½È¤Î³Ñ¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+"ï¿½Þ¡ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+    for (int i = 0; i < width; i++) { // widthï¿½Ä¤ï¿½"-"ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½
+      System.out.print("-"); // ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½ï¿½ï¿½Ñ¤ï¿½ï¿½ë¡£
     }
-    public void open() {                                // ¥ª¡¼¥Ð¡¼¥é¥¤¥É¤·¤ÆÄêµÁ¤¹¤ëopen¥á¥½¥Ã¥É¡£
-        printLine();                                    // ¤³¤Î¥¯¥é¥¹¤Î¥á¥½¥Ã¥ÉprintLine¤ÇÀþ¤ò°ú¤¤¤Æ¤¤¤ë¡£
-    }
-    public void print() {                               // print¥á¥½¥Ã¥É¤Ï¡¢
-        System.out.println("|" + string + "|");         // ¥Õ¥£¡¼¥ë¥É¤Ëµ­²±¤·¤Æ¤ª¤¤¤¿Ê¸»úÎó¤ÎÁ°¸å¤Ë"|"¤ò¤Ä¤±¤ÆÉ½¼¨¡£
-    }
-    public void close() {                               // close¥á¥½¥Ã¥É¤Ï¡¢
-        printLine();                                    // open¤ÈÆ±¤¸¤¯printLine¥á¥½¥Ã¥É¤ÇÀþ¤ò°ú¤¤¤Æ¤¤¤ë¡£
-    }
-    private void printLine() {                          // open¤Èclose¤«¤é¸Æ¤Ð¤ì¤ëprintLine¥á¥½¥Ã¥É¤À¡£private¤Ê¤Î¤Ç¡¢¤³¤Î¥¯¥é¥¹¤ÎÃæ¤À¤±¤Ç»È¤ï¤ì¤ë¡£
-        System.out.print("+");                          // ÏÈ¤Î³Ñ¤òÉ½¸½¤¹¤ë"+"¥Þ¡¼¥¯¤òÉ½¼¨¡£
-        for (int i = 0; i < width; i++) {               // width¸Ä¤Î"-"¤òÉ½¼¨¤·¤Æ¡¢
-            System.out.print("-");                      // ÏÈÀþ¤È¤·¤ÆÍÑ¤¤¤ë¡£
-        }
-        System.out.println("+");                        // ÏÈ¤Î³Ñ¤òÉ½¸½¤¹¤ë"+"¥Þ¡¼¥¯¤òÉ½¼¨¡£
-    }
+    System.out.println("+"); // ï¿½È¤Î³Ñ¤ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+"ï¿½Þ¡ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½
+  }
 }

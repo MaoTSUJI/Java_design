@@ -45,5 +45,4 @@ public class MultiStringDisplay extends Display {
     }
     return buf.toString();
   }
-
 }

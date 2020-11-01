@@ -1,27 +1,34 @@
 public class NoonState implements State {
-    private static NoonState singleton = new NoonState();
-    private NoonState() {                                // ¥³¥ó¥¹¥È¥é¥¯¥¿¤Ïprivate
+  private static NoonState singleton = new NoonState();
+
+  private NoonState() { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½private
+  }
+
+  public static State getInstance() { // Í£ï¿½ï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    return singleton;
+  }
+
+  public void doClock(Context context, int hour) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (hour < 9 || 17 <= hour) {
+      context.changeState(NightState.getInstance());
+    } else if (9 <= hour && hour < 12 || 13 <= hour && hour < 17) {
+      context.changeState(DayState.getInstance());
     }
-    public static State getInstance() {                 // Í£°ì¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÆÀ¤ë
-        return singleton;
-    }
-    public void doClock(Context context, int hour) {    // »þ¹ïÀßÄê     
-        if (hour < 9 || 17 <= hour) {
-            context.changeState(NightState.getInstance());
-        } else if (9 <= hour && hour < 12 || 13 <= hour && hour < 17) {
-            context.changeState(DayState.getInstance());
-        }
-    }
-    public void doUse(Context context) {                // ¶â¸Ë»ÈÍÑ
-        context.callSecurityCenter("Èó¾ï¡§Ãë¿©»þ¤Î¶â¸Ë»ÈÍÑ¡ª");
-    }
-    public void doAlarm(Context context) {              // Èó¾ï¥Ù¥ë
-        context.callSecurityCenter("Èó¾ï¥Ù¥ë(Ãë¿©»þ)");
-    }
-    public void doPhone(Context context) {              // ÄÌ¾ïÄÌÏÃ
-        context.recordLog("Ãë¿©»þ¤ÎÄÌÏÃÏ¿²»");
-    }
-    public String toString() {                          // Ê¸»úÎóÉ½¸½
-        return "[Ãë¿©»þ]";
-    }
+  }
+
+  public void doUse(Context context) { // ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
+    context.callSecurityCenter("ï¿½ï¿½ï¡§ï¿½ë¿©ï¿½ï¿½ï¿½Î¶ï¿½Ë»ï¿½ï¿½Ñ¡ï¿½");
+  }
+
+  public void doAlarm(Context context) { // ï¿½ï¿½ï¿½Ù¥ï¿½
+    context.callSecurityCenter("ï¿½ï¿½ï¿½Ù¥ï¿½(ï¿½ë¿©ï¿½ï¿½)");
+  }
+
+  public void doPhone(Context context) { // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½
+    context.recordLog("ï¿½ë¿©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½");
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[ï¿½ë¿©ï¿½ï¿½]";
+  }
 }

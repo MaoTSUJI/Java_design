@@ -3,31 +3,29 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class BigChar {
-    // Ê¸»ú¤ÎÌ¾Á°
-    private char charname;
-    // Âç¤­¤ÊÊ¸»ú¤òÉ½¸½¤¹¤ëÊ¸»úÎó('#' '.' '\n'¤ÎÎó)
-    private String fontdata;
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public BigChar(char charname) {
-        this.charname = charname;
-        try {
-            BufferedReader reader = new BufferedReader(
-                new FileReader("big" + charname + ".txt")
-            );
-            String line;
-            StringBuffer buf = new StringBuffer();
-            while ((line = reader.readLine()) != null) {
-                buf.append(line);
-                buf.append("\n");
-            }
-            reader.close();
-            this.fontdata = buf.toString();
-        } catch (IOException e) {
-            this.fontdata = charname + "?";
-        }
+  // Ê¸ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½
+  private char charname;
+  // ï¿½ç¤­ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½('#' '.' '\n'ï¿½ï¿½ï¿½ï¿½)
+  private String fontdata;
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public BigChar(char charname) {
+    this.charname = charname;
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader("big" + charname + ".txt"));
+      String line;
+      StringBuffer buf = new StringBuffer();
+      while ((line = reader.readLine()) != null) {
+        buf.append(line);
+        buf.append("\n");
+      }
+      reader.close();
+      this.fontdata = buf.toString();
+    } catch (IOException e) {
+      this.fontdata = charname + "?";
     }
-    // Âç¤­¤ÊÊ¸»ú¤òÉ½¼¨¤¹¤ë
-    public void print() {
-        System.out.print(fontdata);
-    }
+  }
+  // ï¿½ç¤­ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void print() {
+    System.out.print(fontdata);
+  }
 }

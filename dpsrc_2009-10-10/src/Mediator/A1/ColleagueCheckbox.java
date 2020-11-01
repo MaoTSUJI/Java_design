@@ -1,20 +1,24 @@
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class ColleagueCheckbox extends Checkbox implements ItemListener, Colleague {
-    private Mediator mediator;
-    public ColleagueCheckbox(String caption, CheckboxGroup group, boolean state) {  // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        super(caption, group, state);
-    }
-    public void setMediator(Mediator mediator) {            // Mediator¤òÊÝ»ý
-        this.mediator = mediator;
-    }
-    public void setColleagueEnabled(boolean enabled) {      // Mediator¤«¤éÍ­¸ú/Ìµ¸ú¤¬»Ø¼¨¤µ¤ì¤ë
-        setEnabled(enabled);
-    }
-    public void itemStateChanged(ItemEvent e) {             // ¾õÂÖ¤¬ÊÑ²½¤·¤¿¤éMediator¤ËÄÌÃÎ
-        mediator.colleagueChanged();
-    }
+  private Mediator mediator;
+
+  public ColleagueCheckbox(String caption, CheckboxGroup group, boolean state) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    super(caption, group, state);
+  }
+
+  public void setMediator(Mediator mediator) { // Mediatorï¿½ï¿½ï¿½Ý»ï¿½
+    this.mediator = mediator;
+  }
+
+  public void setColleagueEnabled(boolean enabled) { // Mediatorï¿½ï¿½ï¿½ï¿½Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    setEnabled(enabled);
+  }
+
+  public void itemStateChanged(ItemEvent e) { // ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mediatorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    mediator.colleagueChanged();
+  }
 }

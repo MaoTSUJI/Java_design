@@ -1,9 +1,9 @@
 public class Main {
-    public static void main(String[] args) {
-        Printable p = new PrinterProxy("Alice");
-        System.out.println("Ì¾Á°¤Ï¸½ºß" + p.getPrinterName() + "¤Ç¤¹¡£");
-        p.setPrinterName("Bob");
-        System.out.println("Ì¾Á°¤Ï¸½ºß" + p.getPrinterName() + "¤Ç¤¹¡£");
-        p.print("Hello, world.");
-    }
+  public static void main(String[] args) {
+    Printable p = new PrinterProxy("Alice");
+    System.out.println("Ì¾ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½" + p.getPrinterName() + "ï¿½Ç¤ï¿½ï¿½ï¿½");
+    p.setPrinterName("Bob");
+    System.out.println("Ì¾ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½" + p.getPrinterName() + "ï¿½Ç¤ï¿½ï¿½ï¿½");
+    p.print("Hello, world.");
+  }
 }
