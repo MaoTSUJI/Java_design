@@ -1,3 +1,5 @@
+package chap16;
+
 import java.awt.Button;
 
 public class ColleagueButton extends Button implements Colleague {

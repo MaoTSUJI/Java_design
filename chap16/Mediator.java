@@ -1,3 +1,5 @@
+package chap16;
+
 public interface Mediator {
   public abstract void createColleagues(); // 管理するメンバーを生成する
 

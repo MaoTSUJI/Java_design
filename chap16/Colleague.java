@@ -1,3 +1,5 @@
+package chap16;
+
 public interface Colleague {
   public abstract void setMediator(Mediator mediator); // 最初に呼び出すメソッド // 相談役が誰かを認識させる
 

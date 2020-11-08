@@ -1,3 +1,5 @@
+package chap16;
+
 import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Frame;
@@ -6,7 +8,7 @@ import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginFrame extends Frame implements ActionListener, Mediator {
+public class LoginFrame extends Frame implements ActionListener, Mediator { // アプリの依存性が高と再利用性が低くなる
   private ColleagueCheckbox checkGuest;
   private ColleagueCheckbox checkLogin;
   private ColleagueTextField textUser;
@@ -77,7 +79,7 @@ public class LoginFrame extends Frame implements ActionListener, Mediator {
   private void userpassChanged() {
     if (textUser.getText().length() > 0) {
       textPass.setColleagueEnabled(true);
-      if (textPass.getText().length() > 0) {
+      if (textUser.getText().length() >= 4 && textPass.getText().length() >= 4) {
         buttonOk.setColleagueEnabled(true);
       } else {
         buttonOk.setColleagueEnabled(false);
