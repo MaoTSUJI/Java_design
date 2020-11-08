@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Remote Debug (mansion-note-webapp)",
+            "request": "attach",
+            "hostName": "local.mansion-note.com",
+            "port": 8000
+        }
+    ]
+}
