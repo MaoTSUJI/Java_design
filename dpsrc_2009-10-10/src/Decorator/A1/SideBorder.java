@@ -1,16 +1,20 @@
 public class SideBorder extends Border {
-    private char borderChar;                        // ¾þ¤ê¤È¤Ê¤ëÊ¸»ú
-    public SideBorder(Display display, char ch) {   // ¥³¥ó¥¹¥È¥é¥¯¥¿¤ÇDisplay¤È¾þ¤êÊ¸»ú¤ò»ØÄê
-        super(display);
-        this.borderChar = ch;
-    }
-    public int getColumns() {                       // Ê¸»ú¿ô¤ÏÃæ¿È¤ÎÎ¾Â¦¤Ë¾þ¤êÊ¸»úÊ¬¤ò²Ã¤¨¤¿¤â¤Î
-        return 1 + display.getColumns() + 1;
-    }
-    public int getRows() {                          // ¹Ô¿ô¤ÏÃæ¿È¤Î¹Ô¿ô¤ËÆ±¤¸
-        return display.getRows();
-    }
-    public String getRowText(int row) {             // »ØÄê¹Ô¤ÎÆâÍÆ¤Ï¡¢Ãæ¿È¤Î»ØÄê¹Ô¤ÎÎ¾Â¦¤Ë¾þ¤êÊ¸»ú¤ò¤Ä¤±¤¿¤â¤Î
-        return borderChar + display.getRowText(row) + borderChar;
-    }
+  private char borderChar; // ï¿½ï¿½ï¿½ï¿½È¤Ê¤ï¿½Ê¸ï¿½ï¿½
+
+  public SideBorder(Display display, char ch) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½Displayï¿½È¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    super(display);
+    this.borderChar = ch;
+  }
+
+  public int getColumns() { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½Î¾Â¦ï¿½Ë¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½Ê¬ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return 1 + display.getColumns() + 1;
+  }
+
+  public int getRows() { // ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½È¤Î¹Ô¿ï¿½ï¿½ï¿½Æ±ï¿½ï¿½
+    return display.getRows();
+  }
+
+  public String getRowText(int row) { // ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½Æ¤Ï¡ï¿½ï¿½ï¿½È¤Î»ï¿½ï¿½ï¿½Ô¤ï¿½Î¾Â¦ï¿½Ë¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½Ä¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return borderChar + display.getRowText(row) + borderChar;
+  }
 }

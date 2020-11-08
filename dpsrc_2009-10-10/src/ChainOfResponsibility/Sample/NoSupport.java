@@ -1,8 +1,9 @@
 public class NoSupport extends Support {
-    public NoSupport(String name) {
-        super(name);
-    }
-    protected boolean resolve(Trouble trouble) {     // ²ò·èÍÑ¥á¥½¥Ã¥É
-        return false; // ¼«Ê¬¤Ï²¿¤â½èÍý¤·¤Ê¤¤
-    }
+  public NoSupport(String name) {
+    super(name);
+  }
+
+  protected boolean resolve(Trouble trouble) { // ï¿½ï¿½ï¿½ï¿½Ñ¥á¥½ï¿½Ã¥ï¿½
+    return false; // ï¿½ï¿½Ê¬ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½
+  }
 }

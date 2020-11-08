@@ -1,27 +1,34 @@
 public class DayState implements State {
-    private static DayState singleton = new DayState();
-    private DayState() {                                // ¥³¥ó¥¹¥È¥é¥¯¥¿¤Ïprivate
+  private static DayState singleton = new DayState();
+
+  private DayState() { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½private
+  }
+
+  public static State getInstance() { // Í£ï¿½ï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    return singleton;
+  }
+
+  public void doClock(Context context, int hour) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (hour < 9 || 17 <= hour) {
+      context.changeState(NightState.getInstance());
+    } else if (12 <= hour && hour < 13) {
+      context.changeState(NoonState.getInstance());
     }
-    public static State getInstance() {                 // Í£°ì¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÆÀ¤ë
-        return singleton;
-    }
-    public void doClock(Context context, int hour) {    // »þ¹ïÀßÄê
-        if (hour < 9 || 17 <= hour) {
-            context.changeState(NightState.getInstance());
-        } else if (12 <= hour && hour < 13) {                   
-            context.changeState(NoonState.getInstance());       
-        }                                                       
-    }
-    public void doUse(Context context) {                // ¶â¸Ë»ÈÍÑ
-        context.recordLog("¶â¸Ë»ÈÍÑ(Ãë´Ö)");
-    }
-    public void doAlarm(Context context) {              // Èó¾ï¥Ù¥ë
-        context.callSecurityCenter("Èó¾ï¥Ù¥ë(Ãë´Ö)");
-    }
-    public void doPhone(Context context) {              // ÄÌ¾ïÄÌÏÃ
-        context.callSecurityCenter("ÄÌ¾ï¤ÎÄÌÏÃ(Ãë´Ö)");
-    }
-    public String toString() {                          // Ê¸»úÎóÉ½¸½
-        return "[Ãë´Ö]";
-    }
+  }
+
+  public void doUse(Context context) { // ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
+    context.recordLog("ï¿½ï¿½Ë»ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½)");
+  }
+
+  public void doAlarm(Context context) { // ï¿½ï¿½ï¿½Ù¥ï¿½
+    context.callSecurityCenter("ï¿½ï¿½ï¿½Ù¥ï¿½(ï¿½ï¿½ï¿½)");
+  }
+
+  public void doPhone(Context context) { // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½
+    context.callSecurityCenter("ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½)");
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[ï¿½ï¿½ï¿½]";
+  }
 }

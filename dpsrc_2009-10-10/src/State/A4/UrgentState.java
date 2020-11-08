@@ -1,23 +1,30 @@
 public class UrgentState implements State {
-    private static UrgentState singleton = new UrgentState();
-    private UrgentState() {                                // ¥³¥ó¥¹¥È¥é¥¯¥¿¤Ïprivate
-    }
-    public static State getInstance() {                 // Í£°ì¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÆÀ¤ë
-        return singleton;
-    }
-    public void doClock(Context context, int hour) {    // »þ¹ïÀßÄê     
-        // »þ¹ïÀßÄê¤Ç¤Ï²¿¤â½èÍý¤ò¤·¤Ê¤¤                                 
-    }                                                                   
-    public void doUse(Context context) {                // ¶â¸Ë»ÈÍÑ
-        context.callSecurityCenter("Èó¾ï:Èó¾ï»þ¤Î¶â¸Ë»ÈÍÑ¡ª");
-    }
-    public void doAlarm(Context context) {              // Èó¾ï¥Ù¥ë
-        context.callSecurityCenter("Èó¾ï¥Ù¥ë(Èó¾ï»þ)");
-    }
-    public void doPhone(Context context) {              // ÄÌ¾ïÄÌÏÃ
-        context.callSecurityCenter("ÄÌ¾ï¤ÎÄÌÏÃ(Èó¾ï»þ)");
-    }
-    public String toString() {                          // Ê¸»úÎóÉ½¸½
-        return "[Èó¾ï»þ]";
-    }
+  private static UrgentState singleton = new UrgentState();
+
+  private UrgentState() { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½private
+  }
+
+  public static State getInstance() { // Í£ï¿½ï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    return singleton;
+  }
+
+  public void doClock(Context context, int hour) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¤·¤Ê¤ï¿½
+  }
+
+  public void doUse(Context context) { // ï¿½ï¿½Ë»ï¿½ï¿½ï¿½
+    context.callSecurityCenter("ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½Ë»ï¿½ï¿½Ñ¡ï¿½");
+  }
+
+  public void doAlarm(Context context) { // ï¿½ï¿½ï¿½Ù¥ï¿½
+    context.callSecurityCenter("ï¿½ï¿½ï¿½Ù¥ï¿½(ï¿½ï¿½ï¿½ï¿½)");
+  }
+
+  public void doPhone(Context context) { // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½
+    context.callSecurityCenter("ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)");
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[ï¿½ï¿½ï¿½ï¿½]";
+  }
 }

@@ -1,14 +1,17 @@
 import java.awt.Button;
 
 public class ColleagueButton extends Button implements Colleague {
-    private Mediator mediator;
-    public ColleagueButton(String caption) {
-        super(caption);
-    }
-    public void setMediator(Mediator mediator) {            // Mediator¤òÊÝ»ý
-        this.mediator = mediator;
-    }
-    public void setColleagueEnabled(boolean enabled) {      // Mediator¤«¤éÍ­¸ú/Ìµ¸ú¤¬»Ø¼¨¤µ¤ì¤ë
-        setEnabled(enabled);
-    }
+  private Mediator mediator;
+
+  public ColleagueButton(String caption) {
+    super(caption);
+  }
+
+  public void setMediator(Mediator mediator) { // Mediatorï¿½ï¿½ï¿½Ý»ï¿½
+    this.mediator = mediator;
+  }
+
+  public void setColleagueEnabled(boolean enabled) { // Mediatorï¿½ï¿½ï¿½ï¿½Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    setEnabled(enabled);
+  }
 }

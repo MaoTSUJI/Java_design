@@ -1,32 +1,39 @@
 public abstract class Support {
-    private String name;                    // ¤³¤Î¥È¥é¥Ö¥ë²ò·è¼Ô¤ÎÌ¾Á°
-    private Support next;                 // ¤¿¤é¤¤²ó¤·¤ÎÀè
-    public Support(String name) {           // ¥È¥é¥Ö¥ë²ò·è¼Ô¤ÎÀ¸À®
-        this.name = name;
+  private String name; // ï¿½ï¿½ï¿½Î¥È¥ï¿½Ö¥ï¿½ï¿½ï¿½Ô¤ï¿½Ì¾ï¿½ï¿½
+  private Support next; // ï¿½ï¿½ï¿½é¤¤ï¿½ó¤·¤ï¿½ï¿½ï¿½
+
+  public Support(String name) { // ï¿½È¥ï¿½Ö¥ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    this.name = name;
+  }
+
+  public Support setNext(Support next) { // ï¿½ï¿½ï¿½é¤¤ï¿½ó¤·¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    this.next = next;
+    return next;
+  }
+
+  public void support(Trouble trouble) { // ï¿½ï¿½ï¿½ï¿½ï¿½Î¥á¥½ï¿½Ã¥ï¿½ï¿½Ö³Ý¤ï¿½
+    for (Support obj = this; true; obj = obj.next) {
+      if (obj.resolve(trouble)) {
+        obj.done(trouble);
+        break;
+      } else if (obj.next == null) {
+        obj.fail(trouble);
+        break;
+      }
     }
-    public Support setNext(Support next) {  // ¤¿¤é¤¤²ó¤·¤ÎÀè¤òÀßÄê
-        this.next = next;
-        return next;
-    }
-    public void support(Trouble trouble) {          // ¢¨¤³¤Î¥á¥½¥Ã¥ÉÌÖ³Ý¤±
-        for (Support obj = this; true; obj = obj.next) {
-            if (obj.resolve(trouble)) {
-                obj.done(trouble);
-                break;
-            } else if (obj.next == null) {
-                obj.fail(trouble);
-                break;
-            }
-        }
-    }
-    public String toString() {              // Ê¸»úÎóÉ½¸½
-        return "[" + name + "]";
-    }
-    protected abstract boolean resolve(Trouble trouble); // ²ò·èÍÑ¥á¥½¥Ã¥É
-    protected void done(Trouble trouble) {  // ²ò·è
-        System.out.println(trouble + " is resolved by " + this + ".");
-    }
-    protected void fail(Trouble trouble) {  // Ì¤²ò·è
-        System.out.println(trouble + " cannot be resolved.");
-    }
+  }
+
+  public String toString() { // Ê¸ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    return "[" + name + "]";
+  }
+
+  protected abstract boolean resolve(Trouble trouble); // ï¿½ï¿½ï¿½ï¿½Ñ¥á¥½ï¿½Ã¥ï¿½
+
+  protected void done(Trouble trouble) { // ï¿½ï¿½ï¿½
+    System.out.println(trouble + " is resolved by " + this + ".");
+  }
+
+  protected void fail(Trouble trouble) { // Ì¤ï¿½ï¿½ï¿½
+    System.out.println(trouble + " cannot be resolved.");
+  }
 }

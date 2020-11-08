@@ -1,56 +1,57 @@
 import command.*;
 import drawer.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Main extends JFrame implements ActionListener {        
-    // ÉÁ²èÍúÎò
-    private MacroCommand history = new MacroCommand();
-    // ÉÁ²èÎÎ°è
-    private DrawCanvas canvas = new DrawCanvas(400, 400, history);
-    // ¾Ãµî¥Ü¥¿¥ó
-    private JButton clearButton  = new JButton("clear");
+public class Main extends JFrame implements ActionListener {
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private MacroCommand history = new MacroCommand();
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½
+  private DrawCanvas canvas = new DrawCanvas(400, 400, history);
+  // ï¿½Ãµï¿½Ü¥ï¿½ï¿½ï¿½
+  private JButton clearButton = new JButton("clear");
 
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public Main(String title) {
-        super(title);
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public Main(String title) {
+    super(title);
 
-        this.addWindowListener(new WindowAdapter() {        
-            public void windowClosing(WindowEvent e) {      
-                System.exit(0);                             
-            }                                               
-        });                                                 
-        canvas.addMouseMotionListener(new MouseMotionAdapter() {    
-            public void mouseDragged(MouseEvent e) {                
-                Command cmd = new DrawCommand(canvas, e.getPoint());    
-                history.append(cmd);                                    
-                cmd.execute();                                          
-            }                                                           
-        });                                                             
-        clearButton.addActionListener(this);
+    this.addWindowListener(
+        new WindowAdapter() {
+          public void windowClosing(WindowEvent e) {
+            System.exit(0);
+          }
+        });
+    canvas.addMouseMotionListener(
+        new MouseMotionAdapter() {
+          public void mouseDragged(MouseEvent e) {
+            Command cmd = new DrawCommand(canvas, e.getPoint());
+            history.append(cmd);
+            cmd.execute();
+          }
+        });
+    clearButton.addActionListener(this);
 
-        Box buttonBox = new Box(BoxLayout.X_AXIS);
-        buttonBox.add(clearButton);
-        Box mainBox = new Box(BoxLayout.Y_AXIS);
-        mainBox.add(buttonBox);
-        mainBox.add(canvas);
-        getContentPane().add(mainBox);
+    Box buttonBox = new Box(BoxLayout.X_AXIS);
+    buttonBox.add(clearButton);
+    Box mainBox = new Box(BoxLayout.Y_AXIS);
+    mainBox.add(buttonBox);
+    mainBox.add(canvas);
+    getContentPane().add(mainBox);
 
-        pack();
-        show();
+    pack();
+    show();
+  }
+
+  // ActionListenerï¿½ï¿½
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == clearButton) {
+      history.clear();
+      canvas.repaint();
     }
+  }
 
-    // ActionListenerÍÑ
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == clearButton) {
-            history.clear();
-            canvas.repaint();
-        }
-    }
-
-    public static void main(String[] args) {
-        new Main("Command Pattern Sample");
-    }
+  public static void main(String[] args) {
+    new Main("Command Pattern Sample");
+  }
 }

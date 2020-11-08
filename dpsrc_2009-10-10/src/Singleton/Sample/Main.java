@@ -1,13 +1,13 @@
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Start.");
-        Singleton obj1 = Singleton.getInstance();
-        Singleton obj2 = Singleton.getInstance();
-        if (obj1 == obj2) {
-            System.out.println("obj1¤Èobj2¤ÏÆ±¤¸¥¤¥ó¥¹¥¿¥ó¥¹¤Ç¤¹¡£");
-        } else {
-            System.out.println("obj1¤Èobj2¤ÏÆ±¤¸¥¤¥ó¥¹¥¿¥ó¥¹¤Ç¤Ï¤¢¤ê¤Þ¤»¤ó¡£");
-        }
-        System.out.println("End.");
+  public static void main(String[] args) {
+    System.out.println("Start.");
+    Singleton obj1 = Singleton.getInstance();
+    Singleton obj2 = Singleton.getInstance();
+    if (obj1 == obj2) {
+      System.out.println("obj1ï¿½ï¿½obj2ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤Ç¤ï¿½ï¿½ï¿½");
+    } else {
+      System.out.println("obj1ï¿½ï¿½obj2ï¿½ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤Ç¤Ï¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
     }
+    System.out.println("End.");
+  }
 }

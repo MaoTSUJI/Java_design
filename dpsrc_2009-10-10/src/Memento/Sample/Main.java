@@ -1,33 +1,33 @@
-import game.Memento;
 import game.Gamer;
+import game.Memento;
 
 public class Main {
-    public static void main(String[] args) {
-        Gamer gamer = new Gamer(100);               // ºÇ½é¤Î½ê»ý¶â¤Ï100
-        Memento memento = gamer.createMemento();    // ºÇ½é¤Î¾õÂÖ¤òÊÝÂ¸¤·¤Æ¤ª¤¯
-        for (int i = 0; i < 100; i++) {
-            System.out.println("==== " + i);        // ²ó¿ôÉ½¼¨
-            System.out.println("¸½¾õ:" + gamer);    // ¸½ºß¤Î¼ç¿Í¸ø¤Î¾õÂÖÉ½¼¨
+  public static void main(String[] args) {
+    Gamer gamer = new Gamer(100); // ï¿½Ç½ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½100
+    Memento memento = gamer.createMemento(); // ï¿½Ç½ï¿½Î¾ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½
+    for (int i = 0; i < 100; i++) {
+      System.out.println("==== " + i); // ï¿½ï¿½ï¿½É½ï¿½ï¿½
+      System.out.println("ï¿½ï¿½ï¿½ï¿½:" + gamer); // ï¿½ï¿½ï¿½ß¤Î¼ï¿½Í¸ï¿½ï¿½Î¾ï¿½ï¿½ï¿½É½ï¿½ï¿½
 
-            gamer.bet();    // ¥²¡¼¥à¤ò¿Ê¤á¤ë
+      gamer.bet(); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½
 
-            System.out.println("½ê»ý¶â¤Ï" + gamer.getMoney() + "±ß¤Ë¤Ê¤ê¤Þ¤·¤¿¡£");
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + gamer.getMoney() + "ï¿½ß¤Ë¤Ê¤ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
 
-            // Memento¤Î¼è¤ê°·¤¤¤Î·èÄê
-            if (gamer.getMoney() > memento.getMoney()) {
-                System.out.println("    ¡Ê¤À¤¤¤ÖÁý¤¨¤¿¤Î¤Ç¡¢¸½ºß¤Î¾õÂÖ¤òÊÝÂ¸¤·¤Æ¤ª¤³¤¦¡Ë");
-                memento = gamer.createMemento();
-            } else if (gamer.getMoney() < memento.getMoney() / 2) {
-                System.out.println("    ¡Ê¤À¤¤¤Ö¸º¤Ã¤¿¤Î¤Ç¡¢°ÊÁ°¤Î¾õÂÖ¤ËÉüµ¢¤·¤è¤¦¡Ë");
-                gamer.restoreMemento(memento);
-            }
+      // Mementoï¿½Î¼ï¿½ê°·ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½
+      if (gamer.getMoney() > memento.getMoney()) {
+        System.out.println("    ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤Ç¡ï¿½ï¿½ï¿½ï¿½ß¤Î¾ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½Â¸ï¿½ï¿½ï¿½Æ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        memento = gamer.createMemento();
+      } else if (gamer.getMoney() < memento.getMoney() / 2) {
+        System.out.println("    ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ã¤ï¿½ï¿½Î¤Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è¤¦ï¿½ï¿½");
+        gamer.restoreMemento(memento);
+      }
 
-            // »þ´ÖÂÔ¤Á
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            System.out.println("");
-        }
+      // ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+      }
+      System.out.println("");
     }
+  }
 }

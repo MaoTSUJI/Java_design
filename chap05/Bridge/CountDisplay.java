@@ -1,5 +1,3 @@
-import java.lang.Math;
-import java.util.Random;
 
 public class CountDisplay extends Display {
   public CountDisplay(DisplayImpl impl) {

@@ -1,7 +1,7 @@
-public class FileTreatmentException extends RuntimeException {      // RuntimeException¤ÇÀµ¤·¤¤¤«¡©
-    public FileTreatmentException() {
-    }
-    public FileTreatmentException(String msg) {
-        super(msg);
-    }
+public class FileTreatmentException extends RuntimeException { // RuntimeExceptionï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public FileTreatmentException() {}
+
+  public FileTreatmentException(String msg) {
+    super(msg);
+  }
 }

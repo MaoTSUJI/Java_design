@@ -1,14 +1,16 @@
 public class SpecialSupport extends Support {
-    private int number;                                 // ¤³¤ÎÈÖ¹æ¤À¤±²ò·è¤Ç¤­¤ë
-    public SpecialSupport(String name, int number) {    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        super(name);
-        this.number = number;
+  private int number; // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½
+
+  public SpecialSupport(String name, int number) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    super(name);
+    this.number = number;
+  }
+
+  protected boolean resolve(Trouble trouble) { // ï¿½ï¿½ï¿½ï¿½Ñ¥á¥½ï¿½Ã¥ï¿½
+    if (trouble.getNumber() == number) {
+      return true;
+    } else {
+      return false;
     }
-    protected boolean resolve(Trouble trouble) {     // ²ò·èÍÑ¥á¥½¥Ã¥É
-        if (trouble.getNumber() == number) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  }
 }

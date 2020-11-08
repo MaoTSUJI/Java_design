@@ -4,7 +4,9 @@ public class ProbStrategy implements Strategy {
   private Random random;
   private int prevHandValue = 0;
   private int currentHandValue = 0;
-  private int[][] history = { { 1, 1, 1 }, { 1, 1, 1 }, { 1, 1, 1 }, }; // 過去の勝敗を反映した確率計算のための表
+  private int[][] history = {
+    {1, 1, 1}, {1, 1, 1}, {1, 1, 1},
+  }; // 過去の勝敗を反映した確率計算のための表
 
   public ProbStrategy(int seed) {
     random = new Random(seed);

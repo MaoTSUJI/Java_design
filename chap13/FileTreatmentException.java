@@ -1,8 +1,7 @@
 package chap13;
 
 public class FileTreatmentException extends RuntimeException {
-  public FileTreatmentException() {
-  }
+  public FileTreatmentException() {}
 
   public FileTreatmentException(String msg) {
     super(msg);

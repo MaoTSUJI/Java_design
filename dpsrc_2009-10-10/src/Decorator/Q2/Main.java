@@ -1,15 +1,15 @@
 public class Main {
-    public static void main(String[] args) {
-        MultiStringDisplay md = new MultiStringDisplay();
-        md.add("¤ª¤Ï¤è¤¦¤´¤¶¤¤¤Þ¤¹¡£");
-        md.add("¤³¤ó¤Ë¤Á¤Ï¡£");
-        md.add("¤ª¤ä¤¹¤ß¤Ê¤µ¤¤¡¢¤Þ¤¿ÌÀÆü¡£");
-        md.show();
+  public static void main(String[] args) {
+    MultiStringDisplay md = new MultiStringDisplay();
+    md.add("ï¿½ï¿½ï¿½Ï¤è¤¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+    md.add("ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½Ï¡ï¿½");
+    md.add("ï¿½ï¿½ï¿½ä¤¹ï¿½ß¤Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+    md.show();
 
-        Display d1 = new SideBorder(md, '#');
-        d1.show();
+    Display d1 = new SideBorder(md, '#');
+    d1.show();
 
-        Display d2 = new FullBorder(md);
-        d2.show();
-    }
+    Display d2 = new FullBorder(md);
+    d2.show();
+  }
 }

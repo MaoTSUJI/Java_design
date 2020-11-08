@@ -1,24 +1,23 @@
 import java.util.HashMap;
 
 public class BigCharFactory {
-    // ¤¹¤Ç¤Ëºî¤Ã¤¿BigChar¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤ò´ÉÍý
-    private HashMap pool = new HashMap();
-    // Singleton¥Ñ¥¿¡¼¥ó
-    private static BigCharFactory singleton = new BigCharFactory();
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    private BigCharFactory() {
+  // ï¿½ï¿½ï¿½Ç¤Ëºï¿½Ã¤ï¿½BigCharï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½
+  private HashMap pool = new HashMap();
+  // Singletonï¿½Ñ¥ï¿½ï¿½ï¿½ï¿½ï¿½
+  private static BigCharFactory singleton = new BigCharFactory();
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  private BigCharFactory() {}
+  // Í£ï¿½ï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+  public static BigCharFactory getInstance() {
+    return singleton;
+  }
+  // BigCharï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Í­)
+  public synchronized BigChar getBigChar(char charname) {
+    BigChar bc = (BigChar) pool.get("" + charname);
+    if (bc == null) {
+      bc = new BigChar(charname); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BigCharï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½
+      pool.put("" + charname, bc);
     }
-    // Í£°ì¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÆÀ¤ë
-    public static BigCharFactory getInstance() {
-        return singleton;
-    }
-    // BigChar¤Î¥¤¥ó¥¹¥¿¥ó¥¹À¸À®(¶¦Í­)
-    public synchronized BigChar getBigChar(char charname) {
-        BigChar bc = (BigChar)pool.get("" + charname);
-        if (bc == null) {
-            bc = new BigChar(charname); // ¤³¤³¤ÇBigChar¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®
-            pool.put("" + charname, bc);
-        }
-        return bc;
-    }
+    return bc;
+  }
 }

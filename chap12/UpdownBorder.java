@@ -29,5 +29,4 @@ public class UpdownBorder extends Border {
     }
     return buf.toString();
   }
-
 }

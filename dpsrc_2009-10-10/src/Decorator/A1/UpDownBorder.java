@@ -1,27 +1,32 @@
 public class UpDownBorder extends Border {
-    private char borderChar;                        // ¾þ¤ê¤È¤Ê¤ëÊ¸»ú
-    public UpDownBorder(Display display, char ch) {   // ¥³¥ó¥¹¥È¥é¥¯¥¿¤ÇDisplay¤È¾þ¤êÊ¸»ú¤ò»ØÄê
-        super(display);
-        this.borderChar = ch;
+  private char borderChar; // ï¿½ï¿½ï¿½ï¿½È¤Ê¤ï¿½Ê¸ï¿½ï¿½
+
+  public UpDownBorder(Display display, char ch) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½Displayï¿½È¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    super(display);
+    this.borderChar = ch;
+  }
+
+  public int getColumns() { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ±ï¿½ï¿½
+    return display.getColumns();
+  }
+
+  public int getRows() { // ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½È¤Î¾å²¼ï¿½Ë¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½Ê¬ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return 1 + display.getRows() + 1;
+  }
+
+  public String getRowText(int row) { // ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (row == 0 || row == getRows() - 1) {
+      return makeLine(borderChar, getColumns());
+    } else {
+      return display.getRowText(row - 1);
     }
-    public int getColumns() {                       // Ê¸»ú¿ô¤ÏÃæ¿È¤ÎÊ¸»ú¿ô¤ËÆ±¤¸
-        return display.getColumns();
+  }
+
+  private String makeLine(char ch, int count) { // Ê¸ï¿½ï¿½chï¿½ï¿½countï¿½ï¿½Ï¢Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    StringBuffer buf = new StringBuffer();
+    for (int i = 0; i < count; i++) {
+      buf.append(ch);
     }
-    public int getRows() {                          // ¹Ô¿ô¤ÏÃæ¿È¤Î¾å²¼¤Ë¾þ¤êÊ¸»úÊ¬¤ò²Ã¤¨¤¿¤â¤Î
-        return 1 + display.getRows() + 1;
-    }
-    public String getRowText(int row) {             // »ØÄê¹Ô¤ÎÆâÍÆ
-        if (row == 0 || row == getRows() - 1) {
-            return makeLine(borderChar, getColumns());
-        } else {
-            return display.getRowText(row - 1);
-        }
-    }
-    private String makeLine(char ch, int count) { // Ê¸»úch¤òcount¸ÄÏ¢Â³¤µ¤»¤¿Ê¸»úÎó¤òºî¤ë
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < count; i++) {
-            buf.append(ch);
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 }

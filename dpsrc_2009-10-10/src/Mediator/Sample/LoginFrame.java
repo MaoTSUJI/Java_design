@@ -1,99 +1,100 @@
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.Color;
 import java.awt.CheckboxGroup;
+import java.awt.Color;
+import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.event.ActionListener;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginFrame extends Frame implements ActionListener, Mediator {
-    private ColleagueCheckbox checkGuest;
-    private ColleagueCheckbox checkLogin;
-    private ColleagueTextField textUser;
-    private ColleagueTextField textPass;
-    private ColleagueButton buttonOk;
-    private ColleagueButton buttonCancel;
+  private ColleagueCheckbox checkGuest;
+  private ColleagueCheckbox checkLogin;
+  private ColleagueTextField textUser;
+  private ColleagueTextField textPass;
+  private ColleagueButton buttonOk;
+  private ColleagueButton buttonCancel;
 
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿¡£
-    // Colleague¤¿¤Á¤òÀ¸À®¤·¡¢ÇÛÃÖ¤·¤¿¸å¤ËÉ½¼¨¤ò¹Ô¤¦¡£
-    public LoginFrame(String title) {
-        super(title);
-        setBackground(Color.lightGray);
-        // ¥ì¥¤¥¢¥¦¥È¥Þ¥Í¡¼¥¸¥ã¤ò»È¤Ã¤Æ4¡ß2¤Î¥°¥ê¥Ã¥É¤òºî¤ë
-        setLayout(new GridLayout(4, 2));
-        // Colleague¤¿¤Á¤ÎÀ¸À®
-        createColleagues();
-        // ÇÛÃÖ
-        add(checkGuest);
-        add(checkLogin);
-        add(new Label("Username:"));
-        add(textUser);
-        add(new Label("Password:"));
-        add(textPass);
-        add(buttonOk);
-        add(buttonCancel);
-        // Í­¸ú/Ìµ¸ú¤Î½é´ü»ØÄê
-        colleagueChanged();
-        // É½¼¨
-        pack();
-        show();
-    }
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½ï¿½ï¿½
+  // Colleagueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½
+  public LoginFrame(String title) {
+    super(title);
+    setBackground(Color.lightGray);
+    // ï¿½ì¥¤ï¿½ï¿½ï¿½ï¿½ï¿½È¥Þ¥Í¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤Ã¤ï¿½4ï¿½ï¿½2ï¿½Î¥ï¿½ï¿½ï¿½Ã¥É¤ï¿½ï¿½ï¿½
+    setLayout(new GridLayout(4, 2));
+    // Colleagueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    createColleagues();
+    // ï¿½ï¿½ï¿½ï¿½
+    add(checkGuest);
+    add(checkLogin);
+    add(new Label("Username:"));
+    add(textUser);
+    add(new Label("Password:"));
+    add(textPass);
+    add(buttonOk);
+    add(buttonCancel);
+    // Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    colleagueChanged();
+    // É½ï¿½ï¿½
+    pack();
+    show();
+  }
 
-    // Colleague¤¿¤Á¤òÀ¸À®¤¹¤ë¡£
-    public void createColleagues() {
-        // À¸À®
-        CheckboxGroup g = new CheckboxGroup();
-        checkGuest = new ColleagueCheckbox("Guest", g, true);
-        checkLogin = new ColleagueCheckbox("Login", g, false);
-        textUser = new ColleagueTextField("", 10);
-        textPass = new ColleagueTextField("", 10);
-        textPass.setEchoChar('*');
-        buttonOk = new ColleagueButton("OK");
-        buttonCancel = new ColleagueButton("Cancel");
-        // Mediator¤Î¥»¥Ã¥È
-        checkGuest.setMediator(this);
-        checkLogin.setMediator(this);
-        textUser.setMediator(this);
-        textPass.setMediator(this);
-        buttonOk.setMediator(this);
-        buttonCancel.setMediator(this);
-        // Listener¤Î¥»¥Ã¥È
-        checkGuest.addItemListener(checkGuest);
-        checkLogin.addItemListener(checkLogin);
-        textUser.addTextListener(textUser);
-        textPass.addTextListener(textPass);
-        buttonOk.addActionListener(this);
-        buttonCancel.addActionListener(this);
-    }
+  // Colleagueï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
+  public void createColleagues() {
+    // ï¿½ï¿½ï¿½ï¿½
+    CheckboxGroup g = new CheckboxGroup();
+    checkGuest = new ColleagueCheckbox("Guest", g, true);
+    checkLogin = new ColleagueCheckbox("Login", g, false);
+    textUser = new ColleagueTextField("", 10);
+    textPass = new ColleagueTextField("", 10);
+    textPass.setEchoChar('*');
+    buttonOk = new ColleagueButton("OK");
+    buttonCancel = new ColleagueButton("Cancel");
+    // Mediatorï¿½Î¥ï¿½ï¿½Ã¥ï¿½
+    checkGuest.setMediator(this);
+    checkLogin.setMediator(this);
+    textUser.setMediator(this);
+    textPass.setMediator(this);
+    buttonOk.setMediator(this);
+    buttonCancel.setMediator(this);
+    // Listenerï¿½Î¥ï¿½ï¿½Ã¥ï¿½
+    checkGuest.addItemListener(checkGuest);
+    checkLogin.addItemListener(checkLogin);
+    textUser.addTextListener(textUser);
+    textPass.addTextListener(textPass);
+    buttonOk.addActionListener(this);
+    buttonCancel.addActionListener(this);
+  }
 
-    // Colleage¤«¤é¤ÎÄÌÃÎ¤Ç³ÆColleage¤ÎÍ­¸ú/Ìµ¸ú¤òÈ½Äê¤¹¤ë¡£
-    public void colleagueChanged() {
-        if (checkGuest.getState()) { // Guest mode
-            textUser.setColleagueEnabled(false);
-            textPass.setColleagueEnabled(false);
-            buttonOk.setColleagueEnabled(true);
-        } else { // Login mode
-            textUser.setColleagueEnabled(true);
-            userpassChanged();
-        }
+  // Colleageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¤Ç³ï¿½Colleageï¿½ï¿½Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½ï¿½È½ï¿½ê¤¹ï¿½ë¡£
+  public void colleagueChanged() {
+    if (checkGuest.getState()) { // Guest mode
+      textUser.setColleagueEnabled(false);
+      textPass.setColleagueEnabled(false);
+      buttonOk.setColleagueEnabled(true);
+    } else { // Login mode
+      textUser.setColleagueEnabled(true);
+      userpassChanged();
     }
-    // textUser¤Þ¤¿¤ÏtextPass¤ÎÊÑ¹¹¤¬¤¢¤Ã¤¿¡£
-    // ³ÆColleage¤ÎÍ­¸ú/Ìµ¸ú¤òÈ½Äê¤¹¤ë¡£
-    private void userpassChanged() {
-        if (textUser.getText().length() > 0) {
-            textPass.setColleagueEnabled(true);
-            if (textPass.getText().length() > 0) {
-                buttonOk.setColleagueEnabled(true);
-            } else {
-                buttonOk.setColleagueEnabled(false);
-            }
-        } else {
-            textPass.setColleagueEnabled(false);
-            buttonOk.setColleagueEnabled(false);
-        }
+  }
+  // textUserï¿½Þ¤ï¿½ï¿½ï¿½textPassï¿½ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½
+  // ï¿½ï¿½Colleageï¿½ï¿½Í­ï¿½ï¿½/Ìµï¿½ï¿½ï¿½ï¿½È½ï¿½ê¤¹ï¿½ë¡£
+  private void userpassChanged() {
+    if (textUser.getText().length() > 0) {
+      textPass.setColleagueEnabled(true);
+      if (textPass.getText().length() > 0) {
+        buttonOk.setColleagueEnabled(true);
+      } else {
+        buttonOk.setColleagueEnabled(false);
+      }
+    } else {
+      textPass.setColleagueEnabled(false);
+      buttonOk.setColleagueEnabled(false);
     }
-    public void actionPerformed(ActionEvent e) {
-        System.out.println(e.toString());
-        System.exit(0);
-    }
+  }
+
+  public void actionPerformed(ActionEvent e) {
+    System.out.println(e.toString());
+    System.exit(0);
+  }
 }

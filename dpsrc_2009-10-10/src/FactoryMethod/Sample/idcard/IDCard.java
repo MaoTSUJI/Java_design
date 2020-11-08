@@ -1,16 +1,20 @@
 package idcard;
+
 import framework.*;
 
 public class IDCard extends Product {
-    private String owner;
-    IDCard(String owner) {
-        System.out.println(owner + "¤Î¥«¡¼¥É¤òºî¤ê¤Þ¤¹¡£");
-        this.owner = owner;
-    }
-    public void use() {
-        System.out.println(owner + "¤Î¥«¡¼¥É¤ò»È¤¤¤Þ¤¹¡£");
-    }
-    public String getOwner() {
-        return owner;
-    }
+  private String owner;
+
+  IDCard(String owner) {
+    System.out.println(owner + "ï¿½Î¥ï¿½ï¿½ï¿½ï¿½É¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+    this.owner = owner;
+  }
+
+  public void use() {
+    System.out.println(owner + "ï¿½Î¥ï¿½ï¿½ï¿½ï¿½É¤ï¿½È¤ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+  }
+
+  public String getOwner() {
+    return owner;
+  }
 }

@@ -1,37 +1,43 @@
 import java.util.ArrayList;
 
 public class MultiStringDisplay extends Display {
-    private ArrayList body = new ArrayList();             // É½¼¨Ê¸»úÎó
-    private int columns = 0;                        // ºÇÂçÊ¸»ú¿ô
-    public void add(String msg) {                   // Ê¸»úÎóÄÉ²Ã
-        body.add(msg);
-        updateColumn(msg);
+  private ArrayList body = new ArrayList(); // É½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½
+  private int columns = 0; // ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½
+
+  public void add(String msg) { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½É²ï¿½
+    body.add(msg);
+    updateColumn(msg);
+  }
+
+  public int getColumns() { // Ê¸ï¿½ï¿½ï¿½ï¿½
+    return columns;
+  }
+
+  public int getRows() { // ï¿½Ô¿ï¿½
+    return body.size();
+  }
+
+  public String getRowText(int row) { // ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    return (String) body.get(row);
+  }
+
+  private void updateColumn(String msg) { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ò¹¹¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (msg.getBytes().length > columns) {
+      columns = msg.getBytes().length;
     }
-    public int getColumns() {                       // Ê¸»ú¿ô
-        return columns;
+    for (int row = 0; row < body.size(); row++) {
+      int fills = columns - ((String) body.get(row)).getBytes().length;
+      if (fills > 0) {
+        body.set(row, body.get(row) + spaces(fills));
+      }
     }
-    public int getRows() {                          // ¹Ô¿ô
-        return body.size();
+  }
+
+  private String spaces(int count) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    StringBuffer buf = new StringBuffer();
+    for (int i = 0; i < count; i++) {
+      buf.append(' ');
     }
-    public String getRowText(int row) {             // ¹Ô¤ÎÆâÍÆ
-        return (String)body.get(row);
-    }
-    private void updateColumn(String msg) {         // Ê¸»ú¿ô¤ò¹¹¿·¤¹¤ë
-        if (msg.getBytes().length > columns) {
-            columns = msg.getBytes().length;
-        }
-        for (int row = 0; row < body.size(); row++) {
-            int fills = columns - ((String)body.get(row)).getBytes().length;
-            if (fills > 0) {
-                body.set(row, body.get(row) + spaces(fills));
-            }
-        }
-    }
-    private String spaces(int count) {              // ¶õÇòºîÀ®
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < count; i++) {
-            buf.append(' ');
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 }

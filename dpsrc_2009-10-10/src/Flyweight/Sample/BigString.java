@@ -1,18 +1,18 @@
 public class BigString {
-    // ¡ÖÂç¤­¤ÊÊ¸»ú¡×¤ÎÇÛÎó
-    private BigChar[] bigchars;
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public BigString(String string) {
-        bigchars = new BigChar[string.length()];
-        BigCharFactory factory = BigCharFactory.getInstance();
-        for (int i = 0; i < bigchars.length; i++) {
-            bigchars[i] = factory.getBigChar(string.charAt(i));
-        }
+  // ï¿½ï¿½ï¿½ç¤­ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½×¤ï¿½ï¿½ï¿½ï¿½ï¿½
+  private BigChar[] bigchars;
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public BigString(String string) {
+    bigchars = new BigChar[string.length()];
+    BigCharFactory factory = BigCharFactory.getInstance();
+    for (int i = 0; i < bigchars.length; i++) {
+      bigchars[i] = factory.getBigChar(string.charAt(i));
     }
-    // É½¼¨
-    public void print() {
-        for (int i = 0; i < bigchars.length; i++) {
-            bigchars[i].print();
-        }
+  }
+  // É½ï¿½ï¿½
+  public void print() {
+    for (int i = 0; i < bigchars.length; i++) {
+      bigchars[i].print();
     }
+  }
 }

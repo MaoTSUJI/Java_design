@@ -1,10 +1,13 @@
 public abstract class Display {
-    public abstract int getColumns();               // ²£¤ÎÊ¸»ú¿ô¤òÆÀ¤ë
-    public abstract int getRows();                  // ½Ä¤Î¹Ô¿ô¤òÆÀ¤ë
-    public abstract String getRowText(int row);     // rowÈÖÌÜ¤ÎÊ¸»úÎó¤òÆÀ¤ë
-    public void show() {                            // Á´ÉôÉ½¼¨¤¹¤ë
-        for (int i = 0; i < getRows(); i++) {
-            System.out.println(getRowText(i));
-        }
+  public abstract int getColumns(); // ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract int getRows(); // ï¿½Ä¤Î¹Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract String getRowText(int row); // rowï¿½ï¿½ï¿½Ü¤ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public void show() { // ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    for (int i = 0; i < getRows(); i++) {
+      System.out.println(getRowText(i));
     }
+  }
 }

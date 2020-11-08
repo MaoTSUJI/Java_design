@@ -1,34 +1,39 @@
 public class PrinterProxy implements Printable {
-    private String name;            // Ì¾Á°
-    private Printable real;         // ¡ÖËÜ¿Í¡×                 
-    private String className;       // ¡ÖËÜ¿Í¡×¤Î¥¯¥é¥¹Ì¾       
-    public PrinterProxy(String name, String className) {      // ¥³¥ó¥¹¥È¥é¥¯¥¿     
-        this.name = name;
-        this.className = className;                                                 
+  private String name; // Ì¾ï¿½ï¿½
+  private Printable real; // ï¿½ï¿½ï¿½Ü¿Í¡ï¿½
+  private String className; // ï¿½ï¿½ï¿½Ü¿Í¡×¤Î¥ï¿½ï¿½é¥¹Ì¾
+
+  public PrinterProxy(String name, String className) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.name = name;
+    this.className = className;
+  }
+
+  public synchronized void setPrinterName(String name) { // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (real != null) {
+      real.setPrinterName(name); // ï¿½ï¿½ï¿½Ü¿Í¡×¤Ë¤ï¿½ï¿½ï¿½ï¿½ê¤¹ï¿½ï¿½
     }
-    public synchronized void setPrinterName(String name) {  // Ì¾Á°¤ÎÀßÄê
-        if (real != null) {
-            real.setPrinterName(name);  // ¡ÖËÜ¿Í¡×¤Ë¤âÀßÄê¤¹¤ë
-        }
-        this.name = name;
+    this.name = name;
+  }
+
+  public String getPrinterName() { // Ì¾ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
+    return name;
+  }
+
+  public void print(String string) { // É½ï¿½ï¿½
+    realize();
+    real.print(string);
+  }
+
+  private synchronized void realize() { // ï¿½ï¿½ï¿½Ü¿Í¡×¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (real == null) {
+      try {
+        real = (Printable) Class.forName(className).newInstance();
+        real.setPrinterName(name);
+      } catch (ClassNotFoundException e) {
+        System.err.println("ï¿½ï¿½ï¿½é¥¹ " + className + " ï¿½ï¿½ï¿½ï¿½ï¿½Ä¤ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½");
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
     }
-    public String getPrinterName() {    // Ì¾Á°¤Î¼èÆÀ
-        return name;
-    }
-    public void print(String string) {  // É½¼¨
-        realize();
-        real.print(string);
-    }
-    private synchronized void realize() {   // ¡ÖËÜ¿Í¡×¤òÀ¸À®
-        if (real == null) {
-            try {                                                                       
-                real = (Printable)Class.forName(className).newInstance();               
-                real.setPrinterName(name);                                              
-            } catch (ClassNotFoundException e) {                                        
-                System.err.println("¥¯¥é¥¹ " + className + " ¤¬¸«¤Ä¤«¤ê¤Þ¤»¤ó¡£");      
-            } catch (Exception e) {                                                     
-                e.printStackTrace();                                                    
-            }                                                                           
-        }
-    }
+  }
 }

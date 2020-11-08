@@ -1,90 +1,89 @@
-import java.awt.Frame;
-import java.awt.Label;
-import java.awt.Color;
-import java.awt.Button;
-import java.awt.TextField;
-import java.awt.TextArea;
-import java.awt.Panel;
 import java.awt.BorderLayout;
-import java.awt.event.ActionListener;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SafeFrame extends Frame implements ActionListener, Context {
-    private TextField textClock = new TextField(60);        // ¸½ºß»þ¹ïÉ½¼¨
-    private TextArea textScreen = new TextArea(10, 60);     // ·ÙÈ÷¥»¥ó¥¿¡¼½ÐÎÏ
-    private Button buttonUse = new Button("¶â¸Ë»ÈÍÑ");      // ¶â¸Ë»ÈÍÑ¥Ü¥¿¥ó
-    private Button buttonAlarm = new Button("Èó¾ï¥Ù¥ë");    // Èó¾ï¥Ù¥ë¥Ü¥¿¥ó
-    private Button buttonPhone = new Button("ÄÌ¾ïÄÌÏÃ");    // ÄÌ¾ïÄÌÏÃ¥Ü¥¿¥ó
-    private Button buttonExit = new Button("½ªÎ»");         // ½ªÎ»¥Ü¥¿¥ó
+  private TextField textClock = new TextField(60); // ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½É½ï¿½ï¿½
+  private TextArea textScreen = new TextArea(10, 60); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½ï¿½ï¿½ï¿½
+  private Button buttonUse = new Button("ï¿½ï¿½Ë»ï¿½ï¿½ï¿½"); // ï¿½ï¿½Ë»ï¿½ï¿½Ñ¥Ü¥ï¿½ï¿½ï¿½
+  private Button buttonAlarm = new Button("ï¿½ï¿½ï¿½Ù¥ï¿½"); // ï¿½ï¿½ï¿½Ù¥ï¿½Ü¥ï¿½ï¿½ï¿½
+  private Button buttonPhone = new Button("ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½"); // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ã¥Ü¥ï¿½ï¿½ï¿½
+  private Button buttonExit = new Button("ï¿½ï¿½Î»"); // ï¿½ï¿½Î»ï¿½Ü¥ï¿½ï¿½ï¿½
 
-    private State state = DayState.getInstance();           // ¸½ºß¤Î¾õÂÖ
+  private State state = DayState.getInstance(); // ï¿½ï¿½ï¿½ß¤Î¾ï¿½ï¿½ï¿½
 
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public SafeFrame(String title) {
-        super(title);
-        setBackground(Color.lightGray);
-        setLayout(new BorderLayout());
-        // textClock¤òÇÛÃÖ
-        add(textClock, BorderLayout.NORTH);
-        textClock.setEditable(false);
-        // textScreen¤òÇÛÃÖ
-        add(textScreen, BorderLayout.CENTER);
-        textScreen.setEditable(false);
-        // ¥Ñ¥Í¥ë¤Ë¥Ü¥¿¥ó¤ò³ÊÇ¼
-        Panel panel = new Panel();
-        panel.add(buttonUse);
-        panel.add(buttonAlarm);
-        panel.add(buttonPhone);
-        panel.add(buttonExit);
-        // ¤½¤Î¥Ñ¥Í¥ë¤òÇÛÃÖ
-        add(panel, BorderLayout.SOUTH);
-        // É½¼¨
-        pack();
-        show();
-        // ¥ê¥¹¥Ê¡¼¤ÎÀßÄê
-        buttonUse.addActionListener(this);
-        buttonAlarm.addActionListener(this);
-        buttonPhone.addActionListener(this);
-        buttonExit.addActionListener(this);
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public SafeFrame(String title) {
+    super(title);
+    setBackground(Color.lightGray);
+    setLayout(new BorderLayout());
+    // textClockï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    add(textClock, BorderLayout.NORTH);
+    textClock.setEditable(false);
+    // textScreenï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    add(textScreen, BorderLayout.CENTER);
+    textScreen.setEditable(false);
+    // ï¿½Ñ¥Í¥ï¿½Ë¥Ü¥ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼
+    Panel panel = new Panel();
+    panel.add(buttonUse);
+    panel.add(buttonAlarm);
+    panel.add(buttonPhone);
+    panel.add(buttonExit);
+    // ï¿½ï¿½ï¿½Î¥Ñ¥Í¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    add(panel, BorderLayout.SOUTH);
+    // É½ï¿½ï¿½
+    pack();
+    show();
+    // ï¿½ê¥¹ï¿½Ê¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    buttonUse.addActionListener(this);
+    buttonAlarm.addActionListener(this);
+    buttonPhone.addActionListener(this);
+    buttonExit.addActionListener(this);
+  }
+  // ï¿½Ü¥ï¿½ï¿½ó¤¬²ï¿½ï¿½ï¿½ï¿½ì¤¿ï¿½é¤³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void actionPerformed(ActionEvent e) {
+    System.out.println(e.toString());
+    if (e.getSource() == buttonUse) { // ï¿½ï¿½Ë»ï¿½ï¿½Ñ¥Ü¥ï¿½ï¿½ï¿½
+      state.doUse(this);
+    } else if (e.getSource() == buttonAlarm) { // ï¿½ï¿½ï¿½Ù¥ï¿½Ü¥ï¿½ï¿½ï¿½
+      state.doAlarm(this);
+    } else if (e.getSource() == buttonPhone) { // ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Ã¥Ü¥ï¿½ï¿½ï¿½
+      state.doPhone(this);
+    } else if (e.getSource() == buttonExit) { // ï¿½ï¿½Î»ï¿½Ü¥ï¿½ï¿½ï¿½
+      System.exit(0);
+    } else {
+      System.out.println("?");
     }
-    // ¥Ü¥¿¥ó¤¬²¡¤µ¤ì¤¿¤é¤³¤³¤ËÍè¤ë
-    public void actionPerformed(ActionEvent e) {
-        System.out.println(e.toString());
-        if (e.getSource() == buttonUse) {           // ¶â¸Ë»ÈÍÑ¥Ü¥¿¥ó
-            state.doUse(this);
-        } else if (e.getSource() == buttonAlarm) {  // Èó¾ï¥Ù¥ë¥Ü¥¿¥ó
-            state.doAlarm(this);
-        } else if (e.getSource() == buttonPhone) {  // ÄÌ¾ïÄÌÏÃ¥Ü¥¿¥ó
-            state.doPhone(this);
-        } else if (e.getSource() == buttonExit) {   // ½ªÎ»¥Ü¥¿¥ó
-            System.exit(0);
-        } else {
-            System.out.println("?");
-        }
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void setClock(int hour) {
+    String clockstring = "ï¿½ï¿½ï¿½ß»ï¿½ï¿½ï¿½ï¿½";
+    if (hour < 10) {
+      clockstring += "0" + hour + ":00";
+    } else {
+      clockstring += hour + ":00";
     }
-    // »þ¹ï¤ÎÀßÄê
-    public void setClock(int hour) {
-        String clockstring = "¸½ºß»þ¹ï¤Ï";
-        if (hour < 10) {
-            clockstring += "0" + hour + ":00";
-        } else {
-            clockstring += hour + ":00";
-        }
-        System.out.println(clockstring);
-        textClock.setText(clockstring);
-        state.doClock(this, hour);
-    }
-    // ¾õÂÖÊÑ²½
-    public void changeState(State state) {
-        System.out.println(this.state + "¤«¤é" + state + "¤Ø¾õÂÖ¤¬ÊÑ²½¤·¤Þ¤·¤¿¡£");
-        this.state = state;
-    }
-    // ·ÙÈ÷¥»¥ó¥¿¡¼·ÙÈ÷°÷¸Æ¤Ó½Ð¤·
-    public void callSecurityCenter(String msg) {
-        textScreen.append("call! " + msg + "\n");
-    }
-    // ·ÙÈ÷¥»¥ó¥¿¡¼µ­Ï¿
-    public void recordLog(String msg) {
-        textScreen.append("record ... " + msg + "\n");
-    }
+    System.out.println(clockstring);
+    textClock.setText(clockstring);
+    state.doClock(this, hour);
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Ñ²ï¿½
+  public void changeState(State state) {
+    System.out.println(this.state + "ï¿½ï¿½ï¿½ï¿½" + state + "ï¿½Ø¾ï¿½ï¿½Ö¤ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+    this.state = state;
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ó½Ð¤ï¿½
+  public void callSecurityCenter(String msg) {
+    textScreen.append("call! " + msg + "\n");
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½ï¿½Ï¿
+  public void recordLog(String msg) {
+    textScreen.append("record ... " + msg + "\n");
+  }
 }

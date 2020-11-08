@@ -1,7 +1,10 @@
 public interface Context {
 
-    public abstract void setClock(int hour);                // »þ¹ï¤ÎÀßÄê
-    public abstract void changeState(State state);          // ¾õÂÖÊÑ²½
-    public abstract void callSecurityCenter(String msg);    // ·ÙÈ÷¥»¥ó¥¿¡¼·ÙÈ÷°÷¸Æ¤Ó½Ð¤·
-    public abstract void recordLog(String msg);             // ·ÙÈ÷¥»¥ó¥¿¡¼µ­Ï¿
+  public abstract void setClock(int hour); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+  public abstract void changeState(State state); // ï¿½ï¿½ï¿½ï¿½ï¿½Ñ²ï¿½
+
+  public abstract void callSecurityCenter(String msg); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¤Ó½Ð¤ï¿½
+
+  public abstract void recordLog(String msg); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¥¿¡ï¿½ï¿½ï¿½Ï¿
 }

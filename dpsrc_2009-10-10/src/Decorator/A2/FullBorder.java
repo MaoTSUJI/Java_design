@@ -1,27 +1,31 @@
 public class FullBorder extends Border {
-    public FullBorder(Display display) {
-        super(display);
+  public FullBorder(Display display) {
+    super(display);
+  }
+
+  public int getColumns() { // Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤ï¿½Î¾Â¦ï¿½Ëºï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½Ê¬ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return 1 + display.getColumns() + 1;
+  }
+
+  public int getRows() { // ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½È¤Î¹Ô¿ï¿½ï¿½Ë¾å²¼ï¿½Î¾ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½Ê¬ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    return 1 + display.getRows() + 1;
+  }
+
+  public String getRowText(int row) { // ï¿½ï¿½ï¿½ê¤·ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (row == 0) { // ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
+      return "+" + makeLine('-', display.getColumns()) + "+";
+    } else if (row == display.getRows() + 1) { // ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
+      return "+" + makeLine('-', display.getColumns()) + "+";
+    } else { // ï¿½ï¿½ï¿½ï¿½Ê³ï¿½
+      return "|" + display.getRowText(row - 1) + "|";
     }
-    public int getColumns() {                   // Ê¸»ú¿ô¤ÏÃæ¿È¤ÎÎ¾Â¦¤Ëº¸±¦¤Î¾þ¤êÊ¸»úÊ¬¤ò²Ã¤¨¤¿¤â¤Î
-        return 1 + display.getColumns() + 1;
+  }
+
+  private String makeLine(char ch, int count) { // Ê¸ï¿½ï¿½chï¿½ï¿½countï¿½ï¿½Ï¢Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    StringBuffer buf = new StringBuffer();
+    for (int i = 0; i < count; i++) {
+      buf.append(ch);
     }
-    public int getRows() {                      // ¹Ô¿ô¤ÏÃæ¿È¤Î¹Ô¿ô¤Ë¾å²¼¤Î¾þ¤êÊ¸»úÊ¬¤ò²Ã¤¨¤¿¤â¤Î
-        return 1 + display.getRows() + 1;
-    }
-    public String getRowText(int row) {         // »ØÄê¤·¤¿¹Ô¤ÎÆâÍÆ
-        if (row == 0) {                                                 // ¾åÃ¼¤ÎÏÈ
-            return "+" + makeLine('-', display.getColumns()) + "+";
-        } else if (row == display.getRows() + 1) {                      // ²¼Ã¼¤ÎÏÈ
-            return "+" + makeLine('-', display.getColumns()) + "+";
-        } else {                                                        // ¤½¤ì°Ê³°
-            return "|" + display.getRowText(row - 1) + "|";
-        }
-    }
-    private String makeLine(char ch, int count) {         // Ê¸»úch¤òcount¸ÄÏ¢Â³¤µ¤»¤¿Ê¸»úÎó¤òºî¤ë
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < count; i++) {
-            buf.append(ch);
-        }
-        return buf.toString();
-    }
+    return buf.toString();
+  }
 }

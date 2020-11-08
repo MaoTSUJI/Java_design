@@ -1,19 +1,23 @@
 public class StringDisplay extends Display {
-    private String string;                          // É½¼¨Ê¸»úÎó
-    public StringDisplay(String string) {           // °ú¿ô¤ÇÉ½¼¨Ê¸»úÎó¤ò»ØÄê
-        this.string = string;
+  private String string; // É½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½
+
+  public StringDisplay(String string) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    this.string = string;
+  }
+
+  public int getColumns() { // Ê¸ï¿½ï¿½ï¿½ï¿½
+    return string.getBytes().length;
+  }
+
+  public int getRows() { // ï¿½Ô¿ï¿½ï¿½ï¿½1
+    return 1;
+  }
+
+  public String getRowText(int row) { // rowï¿½ï¿½0ï¿½Î¤È¤ï¿½ï¿½Î¤ï¿½ï¿½Ö¤ï¿½
+    if (row == 0) {
+      return string;
+    } else {
+      return null;
     }
-    public int getColumns() {                       // Ê¸»ú¿ô
-        return string.getBytes().length;
-    }
-    public int getRows() {                          // ¹Ô¿ô¤Ï1
-        return 1;
-    }
-    public String getRowText(int row) {             // row¤¬0¤Î¤È¤­¤Î¤ßÊÖ¤¹
-        if (row == 0) {
-            return string;
-        } else {
-            return null;
-        }
-    }
+  }
 }

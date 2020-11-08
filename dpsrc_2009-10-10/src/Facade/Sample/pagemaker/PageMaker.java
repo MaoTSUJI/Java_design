@@ -5,21 +5,22 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PageMaker {
-    private PageMaker() {   // ¥¤¥ó¥¹¥¿¥ó¥¹¤Ïºî¤é¤Ê¤¤¤Î¤ÇprivateÀë¸À¤¹¤ë
+  private PageMaker() { // ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤Ïºï¿½ï¿½Ê¤ï¿½ï¿½Î¤ï¿½privateï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  }
+
+  public static void makeWelcomePage(String mailaddr, String filename) {
+    try {
+      Properties mailprop = Database.getProperties("maildata");
+      String username = mailprop.getProperty(mailaddr);
+      HtmlWriter writer = new HtmlWriter(new FileWriter(filename));
+      writer.title("Welcome to " + username + "'s page!");
+      writer.paragraph(username + "ï¿½Î¥Ú¡ï¿½ï¿½ï¿½ï¿½Ø¤è¤¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+      writer.paragraph("ï¿½á¡¼ï¿½ï¿½Þ¤Ã¤Æ¤ï¿½ï¿½Þ¤ï¿½ï¿½Í¡ï¿½");
+      writer.mailto(mailaddr, username);
+      writer.close();
+      System.out.println(filename + " is created for " + mailaddr + " (" + username + ")");
+    } catch (IOException e) {
+      e.printStackTrace();
     }
-    public static void makeWelcomePage(String mailaddr, String filename) {
-        try {
-            Properties mailprop = Database.getProperties("maildata");
-            String username = mailprop.getProperty(mailaddr);
-            HtmlWriter writer = new HtmlWriter(new FileWriter(filename));
-            writer.title("Welcome to " + username + "'s page!");
-            writer.paragraph(username + "¤Î¥Ú¡¼¥¸¤Ø¤è¤¦¤³¤½¡£");
-            writer.paragraph("¥á¡¼¥ë¤Þ¤Ã¤Æ¤¤¤Þ¤¹¤Í¡£");
-            writer.mailto(mailaddr, username);
-            writer.close();
-            System.out.println(filename + " is created for " + mailaddr + " (" + username + ")");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+  }
 }

@@ -1,19 +1,22 @@
 public class Singleton {
-    private static Singleton singleton = null;
-    private Singleton() {
-        System.out.println("¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Þ¤·¤¿¡£");
-        slowdown();                             
+  private static Singleton singleton = null;
+
+  private Singleton() {
+    System.out.println("ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+    slowdown();
+  }
+
+  public static synchronized Singleton getInstance() {
+    if (singleton == null) {
+      singleton = new Singleton();
     }
-    public static synchronized Singleton getInstance() {
-        if (singleton == null) {
-            singleton = new Singleton();
-        }
-        return singleton;
+    return singleton;
+  }
+
+  private void slowdown() {
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
     }
-    private void slowdown() {                   
-        try {                                   
-            Thread.sleep(1000);                 
-        } catch (InterruptedException e) {      
-        }                                       
-    }                                           
+  }
 }

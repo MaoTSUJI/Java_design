@@ -1,10 +1,12 @@
 public class Main {
-    public static void main(String[] args) {
-        AbstractDisplay d1 = new CharDisplay('H');                  // 'H'¤ò»ý¤Ã¤¿CharDisplay¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤ò1¸Äºî¤ë¡£
-        AbstractDisplay d2 = new StringDisplay("Hello, world.");    // "Hello, world."¤ò»ý¤Ã¤¿StringDisplay¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤ò1¸Äºî¤ë¡£
-        AbstractDisplay d3 = new StringDisplay("¤³¤ó¤Ë¤Á¤Ï¡£");     // "¤³¤ó¤Ë¤Á¤Ï¡£"¤ò»ý¤Ã¤¿StringDisplay¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤ò1¸Äºî¤ë¡£
-        d1.display();                                               // d1,d2,d3¤È¤â¡¢¤¹¤Ù¤ÆÆ±¤¸AbstractDisplay¤Î¥µ¥Ö¥¯¥é¥¹¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤À¤«¤é¡¢
-        d2.display();                                               // ·Ñ¾µ¤·¤¿display¥á¥½¥Ã¥É¤ò¸Æ¤Ó½Ð¤¹¤³¤È¤¬¤Ç¤­¤ë¡£
-        d3.display();                                               // ¼ÂºÝ¤ÎÆ°ºî¤Ï¸Ä¡¹¤Î¥¯¥é¥¹CharDisplay¤äStringDisplay¤ÇÄê¤Þ¤ë¡£
-    }
+  public static void main(String[] args) {
+    AbstractDisplay d1 = new CharDisplay('H'); // 'H'ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½CharDisplayï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½1ï¿½Äºï¿½ë¡£
+    AbstractDisplay d2 =
+        new StringDisplay("Hello, world."); // "Hello, world."ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½StringDisplayï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½1ï¿½Äºï¿½ë¡£
+    AbstractDisplay d3 =
+        new StringDisplay("ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½Ï¡ï¿½"); // "ï¿½ï¿½ï¿½ï¿½Ë¤ï¿½ï¿½Ï¡ï¿½"ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½StringDisplayï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½1ï¿½Äºï¿½ë¡£
+    d1.display(); // d1,d2,d3ï¿½È¤â¡¢ï¿½ï¿½ï¿½Ù¤ï¿½Æ±ï¿½ï¿½AbstractDisplayï¿½Î¥ï¿½ï¿½Ö¥ï¿½ï¿½é¥¹ï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½é¡¢
+    d2.display(); // ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½displayï¿½á¥½ï¿½Ã¥É¤ï¿½Æ¤Ó½Ð¤ï¿½ï¿½ï¿½ï¿½È¤ï¿½ï¿½Ç¤ï¿½ï¿½ë¡£
+    d3.display(); // ï¿½ÂºÝ¤ï¿½Æ°ï¿½ï¿½Ï¸Ä¡ï¿½ï¿½Î¥ï¿½ï¿½é¥¹CharDisplayï¿½ï¿½StringDisplayï¿½ï¿½ï¿½ï¿½Þ¤ë¡£
+  }
 }

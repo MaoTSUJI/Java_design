@@ -5,16 +5,17 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Database {
-    private Database() {    // new¤Ç¥¤¥ó¥¹¥¿¥ó¥¹À¸À®¤µ¤»¤Ê¤¤¤¿¤á¤ËprivateÀë¸À
+  private Database() { // newï¿½Ç¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½privateï¿½ï¿½ï¿½
+  }
+
+  public static Properties getProperties(String dbname) { // ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½Ù¡ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½Propertiesï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    String filename = dbname + ".txt";
+    Properties prop = new Properties();
+    try {
+      prop.load(new FileInputStream(filename));
+    } catch (IOException e) {
+      System.out.println("Warning: " + filename + " is not found.");
     }
-    public static Properties getProperties(String dbname) { // ¥Ç¡¼¥¿¥Ù¡¼¥¹Ì¾¤«¤éProperties¤òÆÀ¤ë
-        String filename = dbname + ".txt";
-        Properties prop = new Properties();
-        try {
-            prop.load(new FileInputStream(filename));
-        } catch (IOException e) {
-            System.out.println("Warning: " + filename + " is not found.");
-        }
-        return prop;
-    }
+    return prop;
+  }
 }

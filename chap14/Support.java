@@ -14,13 +14,15 @@ public abstract class Support {
     return next;
   };
 
-  public final void support(Trouble trouble) { // トラブル解決の手順
-    if (resolve(trouble)) {
-      done(trouble);
-    } else if (next != null) {
-      next.support(trouble);
-    } else {
-      fail(trouble);
+  public final void support(Trouble trouble) {
+    for (Support obj = this; true; obj = obj.next) {
+      if (obj.resolve(trouble)) {
+        obj.done(trouble);
+        break;
+      } else {
+        obj.fail(trouble);
+        break;
+      }
     }
   }
 

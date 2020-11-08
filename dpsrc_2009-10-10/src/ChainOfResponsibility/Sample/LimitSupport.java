@@ -1,14 +1,16 @@
 public class LimitSupport extends Support {
-    private int limit;                              // ¤³¤ÎÈÖ¹æÌ¤Ëþ¤Ê¤é²ò·è¤Ç¤­¤ë
-    public LimitSupport(String name, int limit) {   // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        super(name);
-        this.limit = limit;
+  private int limit; // ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Ì¤ï¿½ï¿½ï¿½Ê¤ï¿½ï¿½ï¿½Ç¤ï¿½ï¿½ï¿½
+
+  public LimitSupport(String name, int limit) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    super(name);
+    this.limit = limit;
+  }
+
+  protected boolean resolve(Trouble trouble) { // ï¿½ï¿½ï¿½ï¿½Ñ¥á¥½ï¿½Ã¥ï¿½
+    if (trouble.getNumber() < limit) {
+      return true;
+    } else {
+      return false;
     }
-    protected boolean resolve(Trouble trouble) {         // ²ò·èÍÑ¥á¥½¥Ã¥É
-        if (trouble.getNumber() < limit) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  }
 }

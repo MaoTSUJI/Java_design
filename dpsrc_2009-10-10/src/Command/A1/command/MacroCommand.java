@@ -1,32 +1,32 @@
 package command;
 
-import java.util.Stack;
 import java.util.Iterator;
+import java.util.Stack;
 
 public class MacroCommand implements Command {
-    // Ì¿Îá¤Î½¸¹ç
-    private Stack commands = new Stack();
-    // ¼Â¹Ô
-    public void execute() {
-        Iterator it = commands.iterator();
-        while (it.hasNext()) {
-            ((Command)it.next()).execute();
-        }
+  // Ì¿ï¿½ï¿½Î½ï¿½ï¿½ï¿½
+  private Stack commands = new Stack();
+  // ï¿½Â¹ï¿½
+  public void execute() {
+    Iterator it = commands.iterator();
+    while (it.hasNext()) {
+      ((Command) it.next()).execute();
     }
-    // ÄÉ²Ã
-    public void append(Command cmd) {
-        if (cmd != this) {
-            commands.push(cmd);
-        }
+  }
+  // ï¿½É²ï¿½
+  public void append(Command cmd) {
+    if (cmd != this) {
+      commands.push(cmd);
     }
-    // ºÇ¸å¤ÎÌ¿Îá¤òºï½ü
-    public void undo() {
-        if (!commands.empty()) {
-            commands.pop();
-        }
+  }
+  // ï¿½Ç¸ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void undo() {
+    if (!commands.empty()) {
+      commands.pop();
     }
-    // Á´Éôºï½ü
-    public void clear() {
-        commands.clear();
-    }
+  }
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  public void clear() {
+    commands.clear();
+  }
 }

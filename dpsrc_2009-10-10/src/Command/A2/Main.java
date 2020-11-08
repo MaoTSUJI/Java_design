@@ -1,73 +1,78 @@
 import command.*;
 import drawer.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Main extends JFrame implements ActionListener, MouseMotionListener, WindowListener {
-    // ÉÁ²èÍúÎò
-    private MacroCommand history = new MacroCommand();
-    // ÉÁ²èÎÎ°è
-    private DrawCanvas canvas = new DrawCanvas(400, 400, history);
-    // ¾Ãµî¥Ü¥¿¥ó
-    private JButton clearButton  = new JButton("clear");
-    // ¥¢¥ó¥É¥¥¥Ü¥¿¥ó                                       
-    private JButton undoButton  = new JButton("undo");      
+  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  private MacroCommand history = new MacroCommand();
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½
+  private DrawCanvas canvas = new DrawCanvas(400, 400, history);
+  // ï¿½Ãµï¿½Ü¥ï¿½ï¿½ï¿½
+  private JButton clearButton = new JButton("clear");
+  // ï¿½ï¿½ï¿½ï¿½É¥ï¿½ï¿½Ü¥ï¿½ï¿½ï¿½
+  private JButton undoButton = new JButton("undo");
 
-    // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public Main(String title) {
-        super(title);
+  // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+  public Main(String title) {
+    super(title);
 
-        this.addWindowListener(this);
-        canvas.addMouseMotionListener(this);
-        clearButton.addActionListener(this);
-        undoButton.addActionListener(this);         
+    this.addWindowListener(this);
+    canvas.addMouseMotionListener(this);
+    clearButton.addActionListener(this);
+    undoButton.addActionListener(this);
 
-        Box buttonBox = new Box(BoxLayout.X_AXIS);
-        buttonBox.add(clearButton);
-        buttonBox.add(undoButton);                  
-        Box mainBox = new Box(BoxLayout.Y_AXIS);
-        mainBox.add(buttonBox);
-        mainBox.add(canvas);
-        getContentPane().add(mainBox);
+    Box buttonBox = new Box(BoxLayout.X_AXIS);
+    buttonBox.add(clearButton);
+    buttonBox.add(undoButton);
+    Box mainBox = new Box(BoxLayout.Y_AXIS);
+    mainBox.add(buttonBox);
+    mainBox.add(canvas);
+    getContentPane().add(mainBox);
 
-        pack();
-        show();
+    pack();
+    show();
+  }
+
+  // ActionListenerï¿½ï¿½
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == clearButton) {
+      history.clear();
+      canvas.repaint();
+    } else if (e.getSource() == undoButton) {
+      history.undo();
+      canvas.repaint();
     }
+  }
 
-    // ActionListenerÍÑ
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == clearButton) {
-            history.clear();
-            canvas.repaint();
-        } else if (e.getSource() == undoButton) {       
-            history.undo();                             
-            canvas.repaint();                           
-        }
-    }
+  // MouseMotionListenerï¿½ï¿½
+  public void mouseMoved(MouseEvent e) {}
 
-    // MouseMotionListenerÍÑ
-    public void mouseMoved(MouseEvent e) {
-    }
-    public void mouseDragged(MouseEvent e) {
-        Command cmd = new DrawCommand(canvas, e.getPoint());
-        history.append(cmd);
-        cmd.execute();
-    }
+  public void mouseDragged(MouseEvent e) {
+    Command cmd = new DrawCommand(canvas, e.getPoint());
+    history.append(cmd);
+    cmd.execute();
+  }
 
-    // WindowListenerÍÑ
-    public void windowClosing(WindowEvent e) {
-        System.exit(0);
-    }
-    public void windowActivated(WindowEvent e) {}
-    public void windowClosed(WindowEvent e) {}
-    public void windowDeactivated(WindowEvent e) {}
-    public void windowDeiconified(WindowEvent e) {}
-    public void windowIconified(WindowEvent e) {}
-    public void windowOpened(WindowEvent e) {}
+  // WindowListenerï¿½ï¿½
+  public void windowClosing(WindowEvent e) {
+    System.exit(0);
+  }
 
-    public static void main(String[] args) {
-        new Main("Command Pattern Sample");
-    }
+  public void windowActivated(WindowEvent e) {}
+
+  public void windowClosed(WindowEvent e) {}
+
+  public void windowDeactivated(WindowEvent e) {}
+
+  public void windowDeiconified(WindowEvent e) {}
+
+  public void windowIconified(WindowEvent e) {}
+
+  public void windowOpened(WindowEvent e) {}
+
+  public static void main(String[] args) {
+    new Main("Command Pattern Sample");
+  }
 }

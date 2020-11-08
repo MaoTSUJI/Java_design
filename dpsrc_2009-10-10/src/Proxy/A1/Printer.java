@@ -1,31 +1,37 @@
 public class Printer implements Printable {
-    private String name;
-    public Printer() {
-        heavyJob("Printer¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®Ãæ");
+  private String name;
+
+  public Printer() {
+    heavyJob("Printerï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+  }
+
+  public Printer(String name) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½
+    this.name = name;
+    heavyJob("Printerï¿½Î¥ï¿½ï¿½ó¥¹¥ï¿½ï¿½ï¿½(" + name + ")ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+  }
+
+  public void setPrinterName(String name) { // Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    this.name = name;
+  }
+
+  public String getPrinterName() { // Ì¾ï¿½ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
+    return name;
+  }
+
+  public void print(String string) { // Ì¾ï¿½ï¿½ï¿½Õ¤ï¿½ï¿½ï¿½É½ï¿½ï¿½
+    System.out.println("=== " + name + " ===");
+    System.out.println(string);
+  }
+
+  private void heavyJob(String msg) { // ï¿½Å¤ï¿½ï¿½ï¿½ï¿½(ï¿½Î¤Ä¤ï¿½ï¿½)
+    System.out.print(msg);
+    for (int i = 0; i < 5; i++) {
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+      }
+      System.out.print(".");
     }
-    public Printer(String name) {                   // ¥³¥ó¥¹¥È¥é¥¯¥¿
-        this.name = name;
-        heavyJob("Printer¤Î¥¤¥ó¥¹¥¿¥ó¥¹(" + name + ")¤òÀ¸À®Ãæ");
-    }
-    public void setPrinterName(String name) {       // Ì¾Á°¤ÎÀßÄê
-        this.name = name;
-    }
-    public String getPrinterName() {                // Ì¾Á°¤Î¼èÆÀ
-        return name;
-    }
-    public void print(String string) {              // Ì¾Á°ÉÕ¤­¤ÇÉ½¼¨
-        System.out.println("=== " + name + " ===");
-        System.out.println(string);
-    }
-    private void heavyJob(String msg) {             // ½Å¤¤ºî¶È(¤Î¤Ä¤â¤ê)
-        System.out.print(msg);
-        for (int i = 0; i < 5; i++) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            System.out.print(".");
-        }
-        System.out.println("´°Î»¡£");
-    }
+    System.out.println("ï¿½ï¿½Î»ï¿½ï¿½");
+  }
 }

@@ -1,20 +1,25 @@
 package game;
+
 import java.util.*;
 
 public class Memento {
-    int money;                              // ½ê»ý¶â
-    ArrayList fruits;                       // ¥Õ¥ë¡¼¥Ä
-    public int getMoney() {                 // ½ê»ý¶â¤òÆÀ¤ë(narrow interface)
-        return money;
-    }
-    Memento(int money) {                    // ¥³¥ó¥¹¥È¥é¥¯¥¿(wide interface)
-        this.money = money;
-        this.fruits = new ArrayList();
-    }
-    void addFruit(String fruit) {           // ¥Õ¥ë¡¼¥Ä¤òÄÉ²Ã¤¹¤ë(wide interface)
-        fruits.add(fruit);
-    }
-    List getFruits() {                    // ¥Õ¥ë¡¼¥Ä¤òÆÀ¤ë(wide interface)
-         return (List)fruits.clone();
-    }
+  int money; // ï¿½ï¿½ï¿½ï¿½ï¿½
+  ArrayList fruits; // ï¿½Õ¥ë¡¼ï¿½ï¿½
+
+  public int getMoney() { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(narrow interface)
+    return money;
+  }
+
+  Memento(int money) { // ï¿½ï¿½ï¿½ó¥¹¥È¥é¥¯ï¿½ï¿½(wide interface)
+    this.money = money;
+    this.fruits = new ArrayList();
+  }
+
+  void addFruit(String fruit) { // ï¿½Õ¥ë¡¼ï¿½Ä¤ï¿½ï¿½É²Ã¤ï¿½ï¿½ï¿½(wide interface)
+    fruits.add(fruit);
+  }
+
+  List getFruits() { // ï¿½Õ¥ë¡¼ï¿½Ä¤ï¿½ï¿½ï¿½ï¿½ï¿½(wide interface)
+    return (List) fruits.clone();
+  }
 }

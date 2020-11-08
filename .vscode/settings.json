@@ -1,5 +1,29 @@
 {
+    "recommendations": [
+        "vscjava.vscode-java-pack",
+        "shengchen.vscode-checkstyle",
+    ],
+    "java.completion.importOrder": [],
+    "java.format.enabled": false,
+    "java.import.gradle.enabled": true,
+    "java.import.gradle.version": "5.5",
+    "[java]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "java.autobuild.enabled": true,
+    "java.completion.enabled": true,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.dependency.packagePresentation": "hierarchical",
+    "java.dependency.syncWithFolderExplorer": true,
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
-    "java.saveActions.organizeImports": true
+    "java.saveActions.organizeImports": true,
+    "java.checkstyle.configuration": "/Users/tsujimao/study/Java_design/config/checkstyle/checkstyle.xml",
+    "java.checkstyle.properties": {
+        "checkstyle.cache.file": "/Users/tsujimao/study/Java_design/.checkstyle/cache/vscode.cache"
+    },
+    "java.checkstyle.version": "8.28",
 }

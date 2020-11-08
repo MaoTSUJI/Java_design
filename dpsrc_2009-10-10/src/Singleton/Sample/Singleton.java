@@ -1,9 +1,11 @@
 public class Singleton {
-    private static Singleton singleton = new Singleton();
-    private Singleton() {                                 
-        System.out.println("¥¤¥ó¥¹¥¿¥ó¥¹¤òÀ¸À®¤·¤Þ¤·¤¿¡£");
-    }
-    public static Singleton getInstance() {
-        return singleton;
-    }
+  private static Singleton singleton = new Singleton();
+
+  private Singleton() {
+    System.out.println("ï¿½ï¿½ï¿½ó¥¹¥ï¿½ï¿½ó¥¹¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¤ï¿½ï¿½ï¿½ï¿½ï¿½");
+  }
+
+  public static Singleton getInstance() {
+    return singleton;
+  }
 }

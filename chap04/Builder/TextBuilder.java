@@ -1,4 +1,3 @@
-import org.w3c.dom.Text;
 
 public class TextBuilder extends Builder {
   private StringBuffer buffer = new StringBuffer();
@@ -28,5 +27,4 @@ public class TextBuilder extends Builder {
   public String getResult() {
     return buffer.toString();
   }
-
 }

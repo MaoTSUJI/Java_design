@@ -1,25 +1,25 @@
-public class BookShelfIterator implements Iterator {    // Iteratorインターフェースを
+public class BookShelfIterator implements Iterator { // Iteratorインターフェースを
 
-    private BookShelf bookShelf;
+  private BookShelf bookShelf;
 
-    private int index;
+  private int index;
 
-    public BookShelfIterator(BookShelf bookShelf) { // コンストラクタ
-        this.bookShelf = bookShelf;
-        this.index = 0;
+  public BookShelfIterator(BookShelf bookShelf) { // コンストラクタ
+    this.bookShelf = bookShelf;
+    this.index = 0;
+  }
+
+  public boolean hasNext() {
+    if (index < bookShelf.getLength()) {
+      return true;
+    } else {
+      return false;
     }
-    
-    public boolean hasNext() {
-        if (index < bookShelf.getLength()){
-            return true;
-        } else {
-            return false;
-        }
-    }
+  }
 
-    public Object next() {
-        Book book = bookShelf.getBookAt(index);
-        index++;
-        return book;
-    }
+  public Object next() {
+    Book book = bookShelf.getBookAt(index);
+    index++;
+    return book;
+  }
 }

@@ -8,9 +8,9 @@ public class Director {
   public void construct() {
     builder.makeTitle("Greeting");
     builder.makeString("朝から昼にかけて");
-    builder.makeItems(new String[] { "おはようございます", "こんにちは" });
+    builder.makeItems(new String[] {"おはようございます", "こんにちは"});
     builder.makeString("夜に");
-    builder.makeItems(new String[] { "こんばんは", "おやすみなさい", "さようなら" });
+    builder.makeItems(new String[] {"こんばんは", "おやすみなさい", "さようなら"});
     builder.close();
   }
 }
