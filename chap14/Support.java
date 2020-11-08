@@ -1,32 +1,46 @@
 package chap14;
 
 public abstract class Support {
-  private String name(); // トラブル解決者の名前
+  private String name; // トラブル解決者の名前
 
   private Support next; // たらい回しの先
 
-  public void Support(String name) {
+  public Support(String name) { // トラブル解決者の生成
     this.name = name;
   };
 
-  public Support setNext(Support next) {
+  public Support setNext(Support next) { // たらい回しするメソッド
     this.next = next;
+    return next;
   };
 
-  public final void support(Trouble trouble) {
-
+  public final void support(Trouble trouble) { // トラブル解決の手順
+    if (resolve(trouble)) {
+      done(trouble);
+    } else if (next != null) {
+      next.support(trouble);
+    } else {
+      fail(trouble);
+    }
   }
 
-  public String toString() {
+  public String toString() { // 文字列表現
     return "[" + name + "]";
   }
 
-  public abstract boolean resolve(Trouble trouble);
+  protected abstract boolean resolve(Trouble trouble); // 解決用メソッド
+  // supportメソッドはpublicでresolveメソッドはprotected
+  // 他クラスからはトラブル解決を依頼するにはsupportメソッドを利用して欲しいという意図がある。
+  // resolveがpublicやと関係ないクラスからも解決を要求され、supportクラスで期待されている使い方をされない
+  // supportはあくまでトラブルを解決する抽象クラス
+  // resolveがpublicだと変更すべき箇所がプログラムのあちらこちらに散らばることになる。
 
-  protected void done() {
+  protected void done(Trouble trouble) { // 解決
+    System.out.println(trouble + " is resolved by" + this + ".");
   }
 
-  protected void fail() {
+  protected void fail(Trouble trouble) { // 未解決
+    System.out.println(trouble + " cannot be resolved.");
   }
-
+  // ウィンドウシステムにはChain of Responsibilityパターンが使われている
 }
