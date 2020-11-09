@@ -13,7 +13,7 @@ public abstract class NumberGenerator {
     observers.remove(observer);
   }
 
-  public void notifyObservers() {
+  public void notifyObservers() { // Observerに報告する
     Iterator it = observers.iterator();
     while(it.hasNext()) {
       Observer o = (Observer)it.next();
