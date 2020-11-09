@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
+            "mainClass": "chap17.Main",
+            "projectName": "Java_design_479335a2"
+        },
+        {
+            "type": "java",
             "name": "Remote Debug (mansion-note-webapp)",
             "request": "attach",
             "hostName": "local.mansion-note.com",
