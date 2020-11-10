@@ -1,13 +1,12 @@
 package chap17;
 
 public class IncrementalNumberGenerator extends NumberGenerator {
-  private int initialValue;
   private int finalValue;
   private int delta;
   private int number;
   
   public IncrementalNumberGenerator(int initialValue, int finalValue, int delta) {
-    this.initialValue = initialValue;
+    this.number = initialValue;
     this.finalValue = finalValue;
     this.delta = delta;
   }
@@ -17,11 +16,9 @@ public class IncrementalNumberGenerator extends NumberGenerator {
   }
 
   public void excute() {
-    int i = initialValue;
-    while(i < finalValue) {
-      number = i;
+    while(number < finalValue) {
       notifyObservers();
-      i = i + delta;
+      number += delta;
     }
   }
 
