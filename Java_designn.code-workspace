@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.completion.importOrder": [],
+		"java.format.enabled": false,
+		"java.import.gradle.enabled": true,
+		"java.import.gradle.version": "5.5",
+		"java.autobuild.enabled": true,
+		"java.completion.enabled": true,
+		"java.configuration.checkProjectSettingsExclusions": false,
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.dependency.packagePresentation": "hierarchical",
+		"java.dependency.syncWithFolderExplorer": true,
+		"java.saveActions.organizeImports": true
+	}
+}
