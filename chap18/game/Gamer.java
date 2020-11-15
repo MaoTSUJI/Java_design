@@ -8,7 +8,7 @@ import java.util.Random;
 public class Gamer {
   private int money;  // 所持金
   private List fruits = new ArrayList<String>();
-  private Random random;   // 乱数発生器
+  private Random random = new Random();   // 乱数発生器
   private static String[] fruitsName = {
     "リンゴ", "ぶどう", "バナナ", "みかん"
   };
@@ -30,7 +30,7 @@ public class Gamer {
       System.out.println("所持金が半分になりました");
     } else if (dice == 6){
       String f = getFruit();
-      System.out.println("フルーツ" + f + ")をもらいました");
+      System.out.println("フルーツ(" + f + ")をもらいました");
       fruits.add(f);
     } else {
       System.out.println("何も起こりませんでした");
@@ -38,7 +38,7 @@ public class Gamer {
   }
 
   public Momento createMomento() {   // スナップショットを撮る
-    Momento m = new Momento(getMoney());
+    Momento m = new Momento(getMoney());  // 自分の現在の状態を保存したい時にMomento役を作成
     Iterator it = fruits.iterator();
     while (it.hasNext()) {
       String f = (String)it.next();
