@@ -1,11 +1,17 @@
 package chap18.game;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Momento {
+public class Momento implements Serializable {
   int money;
   ArrayList fruits;
+  private int number;
+
+  int getNumber() {
+    return number;
+  }
 
   // wide interface オブジェクトの状態を元に戻すために必要な情報が全て得られるメソッドの集合
   public int getMoney() {
