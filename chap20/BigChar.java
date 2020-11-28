@@ -11,7 +11,7 @@ public class BigChar {
   public BigChar(char charname) { // 大きな文字のバージョンを作成する
     this.charname = charname;
     try {
-      BufferedReader reader = new BufferedReader(new FileReader("big" + charname + ".txt"));
+      BufferedReader reader = new BufferedReader(new FileReader("./chap20/big" + charname + ".txt"));
       String line;
       StringBuffer buf = new StringBuffer();
       while ((line = reader.readLine()) != null) {
@@ -26,7 +26,6 @@ public class BigChar {
   }
   // 大きな文字を表示する
   public void print() {
-    System.out.print("test");
     System.out.print(fontdata);
   }
 }
