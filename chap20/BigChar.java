@@ -5,8 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class BigChar {
-  private char charname;  // 文字の名前
-  private String fontdata;  // 大きな文字を表現する文字列　1行分
+  private char charname; // 文字の名前
+  private String fontdata; // 大きな文字を表現する文字列　1行分
+
   public BigChar(char charname) { // 大きな文字のバージョンを作成する
     this.charname = charname;
     try {
@@ -15,7 +16,7 @@ public class BigChar {
       StringBuffer buf = new StringBuffer();
       while ((line = reader.readLine()) != null) {
         buf.append(line);
-        buf.append("¥n"); // readLineメソッドでは、改行文字は読み込んだ文字に含まれない
+        buf.append("\n"); // readLineメソッドでは、改行文字は読み込んだ文字に含まれない
       }
       reader.close();
       this.fontdata = buf.toString();
@@ -25,6 +26,7 @@ public class BigChar {
   }
   // 大きな文字を表示する
   public void print() {
+    System.out.print("test");
     System.out.print(fontdata);
   }
 }

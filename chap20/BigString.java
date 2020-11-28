@@ -14,6 +14,7 @@ public class BigString {  // BigCharを集めた「大きな文字列」クラ�
   // 表示
   public void print() {
     for (int i = 0; i < bigchars.length; i++) {
+      System.out.print("test");
       bigchars[i].print();
     }
   }  
