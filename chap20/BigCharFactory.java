@@ -9,7 +9,7 @@ public class BigCharFactory { // BigCharのインスタンスを作成する工�
   public BigCharFactory() {
   }
 
-  public BigCharFactory getInstance() {
+  public static BigCharFactory getInstance() {
     return singleton;
   }
 
