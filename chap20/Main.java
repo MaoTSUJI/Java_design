@@ -4,9 +4,14 @@ public class Main {
   private static BigString[] bsarray = new BigString[1000];
   public static void main(String args[]) {  // 引数で与えられた文字列をもとにBigStringのインスタンスを作り、それを表示
     System.out.println("共有した場合：");
+    long a = System.currentTimeMillis();
     testAllocation(true);
+    long b = System.currentTimeMillis();
     System.out.println("共有しない場合：");
     testAllocation(false);
+    long c = System.currentTimeMillis();
+    System.out.println("処理時間１：" + (b - a) + "ms");
+    System.out.println("処理時間２：" + (c - b) + "ms");
   }  
   
   public static void testAllocation(boolean shared) {
