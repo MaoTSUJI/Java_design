@@ -33,3 +33,17 @@ PrinterクラスはPrinterProxyの存在を知らない。
 直接呼ばれるのかPrinterProxyで呼ばれるのか
 知らない。
 
+## ヒント
+### 透過的
+PrinterProxyクラスとPrinterクラスは、同じPrintableのインターフェースを実装している。
+MainクラスはPrinterでもPrinterProxyクラスを呼び出そうが、気にしない。
+このようなとき、PrinterProxyクラスは「透過的」といえる。
+
+### HTTPプロキシー
+HTTPプロキシーは、HTTPサーバー（Webサーバー）とHTTPクライアント（Webブラウザ）の間に入って、Webページのキャッシングなどを行うソフトウェアのこと。
+WebブラウザがあるWebブラウザを表示するときに、Webサーバーにアクセスして取得するのではなく、HTTPプロキシがキャッシュしてあるページを変わりに取得する。
+最新情報が必要になったとき、ページの有効期限が切れたときに初めて、WebサーバにWebページを取りに行く。
+
+- Virtual Proxy：本当にインスタンスが必要になった時点で生成・初期化を行う
+- Remote Proxy：透過的に、メソッド呼び出しできること。JavaのRMI(Remote Method Invocation:遠隔メソッド呼び出し)がこれに相当する。
+- Access Proxy：アクセス制限を設ける
