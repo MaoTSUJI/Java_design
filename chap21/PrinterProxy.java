@@ -1,12 +1,16 @@
 package chap21;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class PrinterProxy implements Printable{
   private String name;  // 名前
-  private Printer real; // 本人
+  private Printable real;  // 本人
+  private String className;  // 本人クラスの名前
 
-  public PrinterProxy(String name) {   // 名前を保持
+  public PrinterProxy(String name, String className) {   // 名前を保持
     this.name = name;
     // この時点ではまだ本人は作られない
+    this.className = className;
   }
 
 
@@ -30,7 +34,15 @@ public class PrinterProxy implements Printable{
 
   private synchronized void realize() {
     if (real == null) {
-      real = new Printer(name);
+      try {
+        real = (Printable) Class.forName(className).getDeclaredConstructor().newInstance();
+        real.setPrinterName(name);
+      } catch (ClassNotFoundException e) {
+        System.err.print("クラス名：" + className + "がみつかりません。");
+      } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+      | NoSuchMethodException | SecurityException e) {
+    e.printStackTrace();
+  }
     }
   }
 }

@@ -3,6 +3,10 @@ package chap21;
 public class Printer implements Printable {
   private String name;
 
+  public Printer() {
+    heavyJob("Printerのインスタンスを作成中");
+  }
+
   public Printer(String name) {
     this.name = name;
     heavyJob("Printerのインスタンスを作成中");
