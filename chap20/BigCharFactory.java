@@ -13,8 +13,8 @@ public class BigCharFactory { // BigCharのインスタンスを作成する工�
     return singleton;
   }
 
-  public BigChar getBigChar(char charName) { // BigCharのインスタンスを作成
-    // すでに同じ文字に対応するインスタンスが作られていたら、新たしいインスタンスはつくらない。
+  public synchronized BigChar getBigChar(char charName) { // BigCharのインスタンスを作成
+    // すでに同じ文字に対応するインスタンスが作られていたら、新しいインスタンスはつくらない。
     // 以前作ったインスタンスを戻り値とする。
     BigChar bc = (BigChar)pool.get("" + charName);
     if (bc == null) {

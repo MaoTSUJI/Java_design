@@ -82,3 +82,12 @@ long start = System.currentTimeMills();
 long end = System.currentTimeMills();
 System.out.println("処理時間 = " + (end - start));
 ```
+
+## synchronizedメソッド
+synchronizedメソッドは、メソッドの処理全体を、thisに対するsynchronizedブロックで囲んだのと同じ意味を持つ。
+synchronizedブロック同士は原則として、同時並行実行されない。つまり、オブジェクトに鍵をかけて、他のスレッドに邪魔されないように作業している。
+排他制御は、ご動作が起きない必要最低限の狭い範囲に限定して使用するべき。
+
+　BigCharFactoryクラスの`getBigChar`メソッドでは、synchronizedにしておかないと、同時に複数の同じBigCharインスタンスを生成してしまう可能性がある。
+bcに
+値を得たときから、poolにputするまで他のスレッドが割り込まないようにする必要がある。
