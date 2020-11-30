@@ -47,3 +47,9 @@ WebブラウザがあるWebブラウザを表示するときに、Webサーバ�
 - Virtual Proxy：本当にインスタンスが必要になった時点で生成・初期化を行う
 - Remote Proxy：透過的に、メソッド呼び出しできること。JavaのRMI(Remote Method Invocation:遠隔メソッド呼び出し)がこれに相当する。
 - Access Proxy：アクセス制限を設ける
+
+### synchronized
+PrinterProxyのsetPrinterNameとrealizeメソッドにsynchronizedがついていなかった場合の不具合について。
+realが既に作成しているにも関わらず、新たに別のrealが生成されてしまうことで、不整合が生じる。
+ProxyクラスのnameとPrinterクラスのnameに不整合が生じる。
+null判断から代入するまでsynchronizedにすることで、realフィールドを守ることになる！
