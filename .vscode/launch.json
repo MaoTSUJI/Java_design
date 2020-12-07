@@ -5,6 +5,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - Main",
             "request": "launch",
+            "mainClass": "chap22.Main",
+            "projectName": "Java_design_479335a2"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Main",
+            "request": "launch",
             "mainClass": "chap21.Main",
             "projectName": "Java_design_479335a2"
         },
