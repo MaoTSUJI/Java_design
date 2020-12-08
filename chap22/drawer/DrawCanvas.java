@@ -11,26 +11,25 @@ public class DrawCanvas extends Canvas implements Drawable {
   private int radius; // 描画する点の半径
   private MacroCommand history; // 履歴
 
-  
   public DrawCanvas(int width, int height, MacroCommand history) {
     setSize(width, height);
     setBackground(Color.white);
     this.history = history;
     init();
   }
-  
+
   public void init() {
     color = Color.red;
     radius = 6;
     history.append(new ColorCommand(this, color));
   }
-  
+
   // 履歴全体を再描画
   // 再描画する必要が生じたときにJava処理系から呼び出されるメソッド(java.awt.フレームワーク)
   public void paint(Graphics g) {
     history.excute(); // これだけで、historyに記録されている命令の集まりが再実行される
   }
-  
+
   // 描画
   public void draw(int x, int y) {
     Graphics g = getGraphics();
