@@ -2,6 +2,7 @@ package chap23;
 
 import java.util.ArrayList;
 
+/* <command list> ::= <command>* end を読み取る*/
 public class CommandListNode extends Node {
   private ArrayList list = new ArrayList();
 

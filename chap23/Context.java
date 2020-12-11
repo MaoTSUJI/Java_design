@@ -32,4 +32,14 @@ public class Context {
     }
     // 次のトークン処理を行う　nextToken()
   }
+
+  public int currentNumber() throws ParseException {
+    int number = 0;
+    try {
+      number = Integer.parseInt(currentToken);
+    } catch (NumberFormatException e) {
+      throw new ParseException("Warning: " + e);
+    }
+    return number;
+  }
 }
