@@ -12,7 +12,7 @@ public class CommandListNode extends Node {
     while(true) {
       if (context.currentToken() == null) {
         throw new ParseException("Missing 'end");
-      } else if (context.nextToken().equals("end")) {
+      } else if (context.currentToken().equals("end")) {
         context.skipToken("end");
         break;
       } else { // <command>を解析してることになる

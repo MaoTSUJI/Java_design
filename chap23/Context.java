@@ -30,7 +30,8 @@ public class Context {
       throw new ParseException(
           "Warning: " + token + " is excepted, but " + currentToken + " is found.");
     }
-    // 次のトークン処理を行う　nextToken()
+    // 次のトークン処理を行う　
+    nextToken();
   }
 
   public int currentNumber() throws ParseException {
@@ -42,4 +43,5 @@ public class Context {
     }
     return number;
   }
+
 }
