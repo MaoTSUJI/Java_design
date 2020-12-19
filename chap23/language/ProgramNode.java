@@ -1,4 +1,4 @@
-package chap23;
+package chap23.language;
 
 public class ProgramNode extends Node {
   /* 自分の後に続く<command list>に対応する行動を保持するもの */

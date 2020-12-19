@@ -1,4 +1,4 @@
-package chap23;
+package chap23.language;
 /* <primitive command> ::= go | right | left */
 public class PrimitiveCommandNode extends Node {
   public String name;

@@ -1,4 +1,4 @@
-package chap23;
+package chap23.language;
 
 /* <command> ::= <repeat command> | <primitive command> を読み取る*/
 public class CommandNode extends Node {

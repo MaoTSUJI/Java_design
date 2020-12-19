@@ -1,4 +1,4 @@
-package chap23;
+package chap23.language;
 
 /* <repeat command> ::= repeat <number> <command list> */
 public class RepeatCommandNode extends Node {

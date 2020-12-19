@@ -1,4 +1,4 @@
-package chap23;
+package chap23.language;
 
 /* 高分岐の各部分（ノード）を構成する最上位のクラス */
 public abstract class Node {
