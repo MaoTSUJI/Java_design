@@ -15,9 +15,11 @@ public class TurtleCanvas extends Canvas implements ExecutorFactory {
 
   static final int UNIT_LENGTH = 30; // 動くときの単位長さ
   static final int DIRECTION_UP = 0; // 上向き
-  static final int DIRECTION_DOWN = 3; // 下向き
-  static final int DIRECTION_RIGHT = 6; // 右向き
+  static final int DIRECTION_RIGHT = 3; // 右向き
+  static final int DIRECTION_DOWN = 6; // 下向き
   static final int DIRECTION_LEFT = 9; // 左向き
+  static final int RELATIVE_DIRECTION_RIGHT = 3; // 右に向く
+  static final int RELATIVE_DIRECTION_LEFT = -3; // 左に向く
   static final int RADIUS = 3;  // 半径
   private Point position;
   private int direction = 0;
@@ -59,9 +61,9 @@ public class TurtleCanvas extends Canvas implements ExecutorFactory {
     if (name.equals("go")) {
       return new GoExecutor(this);
     } else if (name.equals("right")) {
-      return null; // new RightExecutor();
+      return new DirectExecutor(this, RELATIVE_DIRECTION_RIGHT);
     } else if (name.equals("left")) {
-      return null; // new LeftExecutor();
+      return new DirectExecutor(this, RELATIVE_DIRECTION_LEFT);
     } else {
       return null;
     }
@@ -78,10 +80,10 @@ public class TurtleCanvas extends Canvas implements ExecutorFactory {
         newy += length;
         break;
       case DIRECTION_RIGHT:
-        newx -= length;
+        newx += length;
         break;
       case DIRECTION_LEFT:
-        newx += length;
+        newx -= length;
         break;
       default:
         break;
@@ -91,7 +93,23 @@ public class TurtleCanvas extends Canvas implements ExecutorFactory {
       g.drawLine(position.x, position.y, newx, newy);
       g.fillOval(newx - RADIUS, newy - RADIUS, RADIUS * 2 + 1, RADIUS * 2 + 1); // 指定された矩形の中の楕円形を現在の色で塗りつぶします。
     }
+    position.x = newx;
+    position.y = newy;
   }
+
+  public void setRelativeDirection(int relativeDirection) {
+    setDirection(direction + relativeDirection);
+  }
+
+  public void setDirection(int direction) {
+    if (direction < 0) {
+      direction = 12 - (-direction) % 12;
+    } else {
+      direction = direction % 12;
+    }
+    this.direction = direction % 12;
+  }
+
 }
 
 abstract class TurtleExecutor implements Executor {
@@ -111,7 +129,18 @@ class GoExecutor extends TurtleExecutor {
   }
 
   public void execute() {
-    // TODO Auto-generated method stub
     canvas.go(TurtleCanvas.UNIT_LENGTH);
+  }
+}
+
+class DirectExecutor extends TurtleExecutor {
+  int relativeDirection;
+  public DirectExecutor(TurtleCanvas canvas, int relativeDirection) {
+    super(canvas);
+    this.relativeDirection = relativeDirection;
+  }
+
+  public void execute() {
+    canvas.setRelativeDirection(relativeDirection);
   }
 }
