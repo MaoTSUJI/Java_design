@@ -2,9 +2,10 @@ package chap23.language;
 
 import java.util.StringTokenizer;
 
-public class Context {
+public class Context implements ExecutorFactory {
   private StringTokenizer tokenizer;
   private String currentToken;
+  private ExecutorFactory factory;
 
   public Context(String text) {
     tokenizer = new StringTokenizer(text);
@@ -43,5 +44,12 @@ public class Context {
     }
     return number;
   }
+
+public void setExecutorFactory(ExecutorFactory factory) {
+  this.factory = factory;
+}
+public Executor creatExecutor(String name) {
+	return factory.creatExecutor(name);
+}
 
 }

@@ -1,39 +1,28 @@
 package chap23;
 
-import java.awt.Canvas;
+import chap23.language.InterpreterFacade;
+import chap23.language.ParseException;
+import chap23.turtle.TurtleCanvas;
+import java.awt.BorderLayout;
+import java.awt.Frame;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
 
-public class Main extends JFrame implements ActionListener {
+public class Main extends Frame implements ActionListener {
 
+  private TurtleCanvas canvas = new TurtleCanvas(400, 400); // 描画領域
+  private InterpreterFacade facade = new InterpreterFacade(canvas);
   // プログラム入力欄
-  private JTextField textField = new JTextField();
-  // 描画領域
-  private Canvas canvas = new Canvas();
-  // 実行ボタン
-  private JButton enterButton = new JButton("enter");
-  // プログラム入力内容
-  private String text;
+  private TextField programTextField = new TextField("program go end");
 
-  public String getText() {
-    return text;
-  }
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
-  public Main(String title) {
+  public Main(String title) throws ParseException {
     super(title);
-    canvas.setSize(400, 400);
-    enterButton.addActionListener(this);
+    canvas.setExecutor(facade);
+    setLayout(new BorderLayout());
+    programTextField.addActionListener(this);
 
     this.addWindowListener(
         new WindowAdapter() {
@@ -42,36 +31,32 @@ public class Main extends JFrame implements ActionListener {
           }
         });
 
-    // ボックスを追加
-    Box textBox = new Box(BoxLayout.X_AXIS);
-    textBox.add(textField);
-    textBox.add(enterButton);
-    Box mainBox = new Box(BoxLayout.Y_AXIS);
-    mainBox.add(textBox);
-    mainBox.add(canvas);
-    getContentPane().add(mainBox);
-
+    add(programTextField, BorderLayout.NORTH);
+    add(canvas, BorderLayout.CENTER);
     pack();
+    parseAndExcute();
     show();
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws ParseException {
     new Main("chap23");
   }
 
   public void actionPerformed(ActionEvent e) {
     try {
-      parseAndExcute();
+      if (e.getSource() == programTextField) {
+        parseAndExcute();
+      }
     } catch (ParseException e1) {
       e1.printStackTrace();
     }
   }
 
   private void parseAndExcute() throws ParseException {
-    setText(textField.getText());
-    System.out.println("text =  \"" + this.getText() + "\"");
-    Node node = new ProgramNode();
-    node.parse(new Context(this.getText()));
-    System.out.println("node = " + node);
+    String programText = programTextField.getText();
+    System.out.println("text =  \"" + programText + "\"");
+    facade.parse(programText);
+    canvas.repaint();
+    // System.out.println("node = " + node);
   }
 }

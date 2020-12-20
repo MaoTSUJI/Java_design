@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 /* <command list> ::= <command>* end を読み取る*/
 public class CommandListNode extends Node {
-  private ArrayList list = new ArrayList();
+  private ArrayList<Node> list = new ArrayList<>();
 
   public void parse(Context context) throws ParseException {
     /* 注目しているトークンがnullだったら残りのトークンがないことになり、例外を投げる */
     /* 次にendだったら、endを読み飛ばしてwhile文をbreakする */
-    while(true) {
+    while (true) {
       if (context.currentToken() == null) {
         throw new ParseException("Missing 'end");
       } else if (context.currentToken().equals("end")) {
@@ -26,5 +26,21 @@ public class CommandListNode extends Node {
 
   public String toString() {
     return list.toString();
+  }
+
+  @Override
+  public void execute() throws ExecuteException {
+    // TODO Auto-generated method stub
+    list.forEach(
+        cmdNode -> {
+          if (cmdNode == null) {
+            return;
+          }
+          try {
+            ((CommandNode) cmdNode).execute();
+          } catch (ExecuteException e) {
+            e.printStackTrace();
+          }
+        });
   }
 }

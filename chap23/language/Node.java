@@ -4,4 +4,6 @@ package chap23.language;
 public abstract class Node {
   /* 構文解析という処理を行う */
   public abstract void parse(Context context) throws ParseException;
+
+  public abstract void execute() throws ExecuteException;
 }

@@ -1,5 +1,7 @@
 package chap23.language;
 
+import java.util.stream.IntStream;
+
 /* <repeat command> ::= repeat <number> <command list> */
 public class RepeatCommandNode extends Node {
   private int number;
@@ -15,5 +17,18 @@ public class RepeatCommandNode extends Node {
 
   public String toString() {
     return "[repeat " + number + " " + commandListNode + "]";
+  }
+
+  public void execute() {
+    // TODO Auto-generated method stub
+    IntStream.range(0, number)
+        .forEach(
+            i -> {
+              try {
+                commandListNode.execute();
+              } catch (ExecuteException e) {
+                e.printStackTrace();
+              }
+            });
   }
 }

@@ -5,7 +5,7 @@ public class ProgramNode extends Node {
   private Node commandListNode;
 
   // <program> ::= program <command list>
-  public void parse(Context context) throws ParseException{
+  public void parse(Context context) throws ParseException {
     // programというトークンを読み飛ばす。
     // もし、programというトークンがなかったらParseExceptionを投げる
     context.skipToken("program");
@@ -18,5 +18,10 @@ public class ProgramNode extends Node {
     return "[program " + commandListNode + "]";
     // 下の記述と同じ!!
     // return "[program " + commandListNode.toString() + "]";
+  }
+
+  public void execute() throws ExecuteException {
+    // TODO Auto-generated method stub
+    commandListNode.execute();
   }
 }
